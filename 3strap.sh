@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source /k-archscript/setup.conf
+source /archscript/setup.conf
 
 mkdir /mnt &>/dev/null # Hiding error message if any
 clear
@@ -59,7 +59,7 @@ clear
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
-cp -R ${SCRIPT_DIR} /mnt/root/k-archscript
+cp -R ${SCRIPT_DIR} /mnt/root/archscript
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 
