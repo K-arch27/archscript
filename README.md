@@ -9,7 +9,9 @@ My own arch install script with Btrfs and snapper Setup
 
 4: cd archscript
 
-5: ./0start.sh
+5: chmod +x ./0start.sh
+
+6: ./0start.sh
 
 (optionnal edit the info.xml and change the date to the current one)
 
