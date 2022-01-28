@@ -17,6 +17,12 @@ echo -ne "
 -------------------------------------------------------------------------
 
 "
+    chmod +x ./1setup.sh
+    chmod +x ./2partition.sh
+    chmod +x ./3strap.sh
+    chmod +x ./4chroot.sh
+    chmod +x ./5final.sh
+    cp -R ${SCRIPT_DIR} /
     ( bash /archscript/1setup.sh )|& tee startup.log
     source /archscript/setup.conf
     ( bash /archscript/2partition.sh )|& tee partition.log
