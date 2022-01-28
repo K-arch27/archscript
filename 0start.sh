@@ -2,8 +2,8 @@
 # Find the name of the folder the scripts are in
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 clear
-mkdir /archscript
-cp -R ${SCRIPT_DIR} /archscript
+#mkdir /archscript
+cp -R ${SCRIPT_DIR} /
 echo -ne "
 -------------------------------------------------------------------------
                  █████╗ ██████╗  ██████╗██╗  ██╗
