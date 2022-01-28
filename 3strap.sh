@@ -60,6 +60,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 
 cp -R ${SCRIPT_DIR} /mnt/root/archscript
+    chmod +x /mnt/root/archscript/4chroot.sh
+    chmod +x /mnt/root/archscript/5final.sh
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 
