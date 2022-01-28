@@ -1,5 +1,5 @@
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source /k-archscript/setup.conf
+source /archscript/setup.conf
 select_option() {
 
     # little helpers for terminal print control and key input
