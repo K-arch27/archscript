@@ -3,7 +3,7 @@ My own arch install script with Btrfs and snapper Setup
 
 1: Boot on Arch Iso
 
-2: pacman -S git
+2: pacman -Sy git
 
 3: git clone https://github.com/K-arch27/archscript.git
 
