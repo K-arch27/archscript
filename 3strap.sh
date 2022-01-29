@@ -33,9 +33,12 @@ timedatectl --no-ask-password set-ntp 1
 
 
 pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr intel-ucode btrfs-progs
-pacstrap /mnt networkmanager nano sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server
-pacstrap /mnt snapper snap-pac fish starship neofetch plasma konsole dolphin dolphin-plugins ark kate kcalc spectacle krunner partitionmanager packagekit-qt5 firefox git sddm
+pacstrap /mnt networkmanager nano sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server snapper snap-pac fish starship neofetch firefox git
 
+#those line bellow can be changed for another DE/Apps set
+pacstrap /mnt  plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
+pacstrap /mnt latte-dock discord filelight htop kruler ksysguard stacer yakuake
+pacstrap /mnt nerd-fonts-fantasque-sans-mono noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
 echo -ne "
 
 -------------------------------------------------------------------------
