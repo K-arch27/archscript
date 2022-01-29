@@ -94,7 +94,7 @@ while true; do
   echo -ne "Please repeat your root password: \n"
   read -s rootpassword2 # read password without echo
 
-  if [ "$password" = "$password2" ]; then
+  if [ "$rootpassword" = "$rootpassword2" ]; then
     set_option ROOTPASSWORD $rootpassword
     break
   else
