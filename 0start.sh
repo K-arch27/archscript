@@ -23,7 +23,7 @@ echo -ne "
     cp -R ${SCRIPT_DIR} /
     mkdir ${SCRIPT_DIR}/log/
     ( bash /archscript/1setup.sh )|& tee ${SCRIPT_DIR}/log/startup.log
-    source /archscript/setup.conf
+    source /archscript/config.sh
     ( bash /archscript/2partition.sh )|& tee ${SCRIPT_DIR}/log/partition.log
     ( bash /archscript/3strap.sh )|& tee ${SCRIPT_DIR}/log/strap.log
     ( arch-chroot /mnt /root/archscript/4chroot.sh )|& tee ${SCRIPT_DIR}/log/chroot.log
