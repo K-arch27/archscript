@@ -37,8 +37,8 @@ pacstrap /mnt networkmanager nano sof-firmware ntfs-3g man-db man-pages texinfo 
 
 #those line bellow can be changed for another DE/Apps set
 pacstrap /mnt  plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
-pacstrap /mnt latte-dock discord filelight htop kruler ksysguard stacer yakuake
-pacstrap /mnt nerd-fonts-fantasque-sans-mono noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
+pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake
+pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
 echo -ne "
 
 -------------------------------------------------------------------------
