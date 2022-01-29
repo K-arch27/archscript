@@ -26,23 +26,26 @@ efiformat () {
 
     case ${options[$?]} in
         y|Y|yes|Yes|YES)
-        echo "EFI partition Formatted"
+        echo "EFI partition will be Formatted"
         mkfs.vfat -F32 ${partition2};;
         n|N|no|NO|No)
         echo "Please make sure it's a valid EFI partition otherwise the following may fail";;
         *) echo "Wrong option. Try again";efiformat;;
     esac
 }
+
+#Formating partition
     efiformat
     clear
 
     mkfs.btrfs -L ROOT -m single ${partition3} -f
     mkfs.btrfs -L HOME -m single ${partition5} -f
+#Getting UUID of newly formated partition    
     uuid2=$(lsblk ${partition2} -no UUID)
     uuid4=$(lsblk ${partition4} -no UUID)
     uuid3=$(lsblk ${partition3} -no UUID)
 
-    uuid5=$(lsblk ${partition5} -no UUID)
+    #uuid5=$(lsblk ${partition5} -no UUID) unused since it was giving out error when trying to mount home with uuid
 
 
 
