@@ -35,6 +35,7 @@ cat /root/archscript/mirror.txt >> /etc/pacman.conf
 curl -O https://blackarch.org/strap.sh
 chmod +x strap.sh
 bash strap.sh
+rm /strap.sh
 pacman -Syyu --noconfirm
 pacman -S paru octopi snap-pac-grub stacer nerd-fonts-fantasque-sans-mono --noconfirm
 
