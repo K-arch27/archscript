@@ -1,18 +1,8 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source /root/archscript/setup.conf
-echo -ne "
--------------------------------------------------------------------------
-   █████╗ ██████╗  ██████╗██╗  ██╗  ███████╗
-  ██╔══██╗██╔══██╗██╔════╝██║  ██║  ╚═══╗██║
-  ███████║██████╔╝██║     ███████║  ███████║
-  ██╔══██║██╔══██╗██║     ██╔══██║  ╚═══╗██║
-  ██║  ██║██║  ██║╚██████╗██║  ██║  ███████║
-  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝  ╚══════╝
--------------------------------------------------------------------------
+source /root/archscript/config.sh
 
-"
-
+logo
 echo -ne "
 
 -------------------------------------------------------------------------
@@ -28,8 +18,8 @@ hwclock --systohc
 # Set keymaps
 localectl --no-ask-password set-keymap $KEYMAP
 echo LANG=en_CA.UTF-8 > /etc/locale.conf
-echo KEYMAP=$KEYMAP > /etc/vconsole.conf
-
+echo KEYMAP=$keymap > /etc/vconsole.conf
+loadkeys $keymap
 echo -ne "
 
 -------------------------------------------------------------------------
