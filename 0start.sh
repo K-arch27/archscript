@@ -21,13 +21,14 @@ echo -ne "
     chmod +x ./4chroot.sh
     chmod +x ./5final.sh
     cp -R ${SCRIPT_DIR} /
-    ( bash /archscript/1setup.sh )|& tee startup.log
+    mkdir ${SCRIPT_DIR}/log/
+    ( bash /archscript/1setup.sh )|& tee ${SCRIPT_DIR}/log/startup.log
     source /archscript/setup.conf
-    ( bash /archscript/2partition.sh )|& tee partition.log
-    ( bash /archscript/3strap.sh )|& tee strap.log
-    ( arch-chroot /mnt /root/archscript/4chroot.sh )|& tee chroot.log
-    ( arch-chroot /mnt /root/archscript/5final.sh )|& tee final.log
-    
+    ( bash /archscript/2partition.sh )|& tee ${SCRIPT_DIR}/log/partition.log
+    ( bash /archscript/3strap.sh )|& tee ${SCRIPT_DIR}/log/strap.log
+    ( arch-chroot /mnt /root/archscript/4chroot.sh )|& tee ${SCRIPT_DIR}/log/chroot.log
+    ( arch-chroot /mnt /root/archscript/5final.sh )|& tee ${SCRIPT_DIR}/log/final.log
+    cp -R ${SCRIPT_DIR} /
 echo -ne "
 -------------------------------------------------------------------------
                  █████╗ ██████╗  ██████╗██╗  ██╗
