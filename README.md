@@ -17,9 +17,9 @@ Having a Home Partition (can be the same as Root but i don't recommend it)
 
 4: cd archscript
 
-5: chmod +x ./0start.sh
+5: chmod +x ./start.sh
 
-6: ./0start.sh
+6: ./start.sh
 
 (optionnal edit the info.xml and change the date to the current one)
 
