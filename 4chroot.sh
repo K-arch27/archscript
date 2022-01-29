@@ -1,18 +1,8 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source /root/archscript/setup.conf
-echo -ne "
--------------------------------------------------------------------------
-   █████╗ ██████╗  ██████╗██╗  ██╗ ███████
-  ██╔══██╗██╔══██╗██╔════╝██║  ██║ ╚═══╝██
-  ███████║██████╔╝██║     ███████║ ███████
-  ██╔══██║██╔══██╗██║     ██╔══██║ ██╚═══╝ 
-  ██║  ██║██║  ██║╚██████╗██║  ██║ ███████
-  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝
--------------------------------------------------------------------------
-
-"
-
+source /root/archscript/config.sh
+clear
+logo
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
@@ -42,7 +32,7 @@ sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
 clear
-
+logo
 echo -ne "
 -------------------------------------------------------------------------
                     Adding User
@@ -67,6 +57,7 @@ mkdir /.snapshots
 mount -a
 chmod 750 /.snapshots
 clear
+logo
 echo -ne "
 -------------------------------------------------------------------------
                   Grub Install
