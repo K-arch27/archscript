@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source /archscript/setup.conf
+source /archscript/config.sh
 
 mkdir /mnt &>/dev/null # Hiding error message if any
 clear
