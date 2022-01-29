@@ -137,6 +137,21 @@ select_option() {
 
     return $(( $active_col + $active_row * $colmax ))
 }
+logo () {
+echo -ne "
+-------------------------------------------------------------------------
+                 █████╗ ██████╗  ██████╗██╗  ██╗
+                ██╔══██╗██╔══██╗██╔════╝██║  ██║
+                ███████║██████╔╝██║     ███████║
+                ██╔══██║██╔══██╗██║     ██╔══██║
+                ██║  ██║██║  ██║╚██████╗██║  ██║
+                ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+-------------------------------------------------------------------------
+        Automated Arch Linux Installer With Btrfs Snapshot
+-------------------------------------------------------------------------
+
+"
+}
 
 timezone () {
 # Added this from arch wiki https://wiki.archlinux.org/title/System_time
@@ -172,6 +187,7 @@ keymap=${options[$?]}
 
 echo -ne "Your key boards layout: ${keymap} \n"
 set_option KEYMAP $keymap
+loadkeys $keymap
 }
 
 userinfo () {
@@ -209,8 +225,11 @@ read -rep "Please enter your hostname: " nameofmachine
 set_option NAME_OF_MACHINE $nameofmachine
 }
 clear
+logo
 keymap
 clear
+logo
 userinfo
 clear
+logo
 timezone
