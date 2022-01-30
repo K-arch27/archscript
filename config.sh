@@ -157,8 +157,8 @@ swappartition () {
 homefinal () {
 clear
 logo
-set_option HOMEPART "yes"
-set_option HOMEDEV $partition5
+HOMEPART="yes"
+HOMEDEV=$partition5
 }
 
 
