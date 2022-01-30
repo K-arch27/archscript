@@ -119,7 +119,8 @@ efiformat () {
         echo "EFI partition will be Formatted"
         mkfs.vfat -F32 ${partition2};;
         n|N|no|NO|No)
-        echo "Please make sure it's a valid EFI partition otherwise the following may fail";;
+        echo "Please make sure it's a valid EFI partition otherwise the following may fail"
+        read -p "Press any key to resume";;
         *) echo "Wrong option. Try again";efiformat;;
     esac
 }
@@ -142,7 +143,8 @@ swappartition () {
         uuid4=$(lsblk ${partition4} -no UUID)
         swapon UUID=${uuid4}
         n|N|no|NO|No)
-        echo "No Swap Partition are gonna be used";;
+        echo "No Swap Partition are gonna be used"
+        read -p "Press any key to resume";;
         *) echo "Wrong option. Try again";efiformat;;
     esac
 }
