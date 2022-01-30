@@ -142,7 +142,7 @@ swappartition () {
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         mkswap ${partition4}
         uuid4="$(lsblk ${partition4} -no UUID)"
-        swapon UUID="${uuid4}";;
+        swapon UUID=${uuid4};;
         n|N|no|NO|No)
         echo "No Swap Partition are gonna be used"
         read -p "Press any key to resume";;
@@ -240,3 +240,37 @@ userinfo
 clear
 logo
 timezone
+
+
+
+    clear
+    logo
+    lsblk
+    read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
+    clear
+    logo
+    efiformat
+    uuid2=$(lsblk ${partition2} -no UUID)
+    set_option EFIUUID $uuid2
+    clear
+    logo
+    swappartition
+    clear
+    logo
+    lsblk
+    homepartition
+    
+
+#Formating partition
+
+    clear
+    logo
+    lsblk
+    read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
+    clear
+    mkfs.btrfs -L ROOT -m single ${partition3} -f
+    uuid3=$(lsblk ${partition3} -no UUID)
+    set_option ROOTUUID $uuid3
+#Getting UUID of newly formated partition    
+
+    
