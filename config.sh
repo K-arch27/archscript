@@ -140,8 +140,8 @@ swappartition () {
         lsblk
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         mkswap ${partition4}
-        uuid4=$(lsblk ${partition4} -no UUID)
-        swapon UUID=${uuid4};;
+        uuid4="$(lsblk ${partition4} -no UUID)"
+        swapon UUID="${uuid4}";;
         n|N|no|NO|No)
         echo "No Swap Partition are gonna be used"
         read -p "Press any key to resume";;
