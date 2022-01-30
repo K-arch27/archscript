@@ -141,7 +141,7 @@ swappartition () {
         lsblk
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         set_option SWAPPART $partition4
-        mkswap $SWAPPART
+        mkswap $partition4
         uuid4="$(lsblk ${partition4} -no UUID)"
         set_option SWAPUUID $uuid4;;
         n|N|no|NO|No)
@@ -175,7 +175,7 @@ homeformat () {
 
     case ${options[$?]} in
         btrfs|Btrfs|BTRFS|b|B)
-        mkfs.btrfs -L HOME -m single ${partition5} -f
+        mkfs.btrfs -L HOME -m single -f ${partition5}
         homefinal;;
         ext4|Ext4|EXT4|e|E)
         mkfs.ext4 -L HOME ${partition5}
@@ -232,18 +232,15 @@ homepartition () {
 }
 
 
-clear
-logo
-keymap
-clear
-logo
-userinfo
-clear
-logo
-timezone
-
-
-
+    clear
+    logo
+    keymap
+    clear
+    logo
+    userinfo
+    clear
+    logo
+    timezone
     clear
     logo
     lsblk
@@ -252,7 +249,7 @@ timezone
     clear
     logo
     efiformat
-    uuid2=$(lsblk $EFIPART -no UUID)
+    uuid2=$(lsblk $partition2 -no UUID)
     set_option EFIUUID $uuid2
     clear
     logo
@@ -261,19 +258,15 @@ timezone
     logo
     lsblk
     homepartition
-    
-
-#Formating partition
-
     clear
     logo
     lsblk
     read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
     set_option ROOTPART $partition3
     clear
-    mkfs.btrfs -L ROOT -m single $ROOTPART -f
-    uuid3=$(lsblk $ROOTPART -no UUID)
+    mkfs.btrfs -L ROOT -m single -f $partition3
+    uuid3=$(lsblk $partition3 -no UUID)
     set_option ROOTUUID $uuid3
-#Getting UUID of newly formated partition    
+
 
     
