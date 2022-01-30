@@ -16,16 +16,14 @@ source /archscript/config.sh
     clear
     logo
     lsblk
-    read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
+    homepartition
+
+#Formating partition
+
     clear
     logo
     lsblk
-    homepartition
-    clear
-    logo
-
-
-#Formating partition
+    read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
     clear
     mkfs.btrfs -L ROOT -m single ${partition3} -f
 
