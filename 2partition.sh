@@ -2,6 +2,7 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source /archscript/config.sh
 
 
+
     clear
     logo
     lsblk
@@ -13,26 +14,8 @@ source /archscript/config.sh
     mkswap ${partition4}
 
     clear
-	logo
-efiformat () {
+    logo
 
-        #choice for formmating the EFI
-
-
-        echo -ne "Do you want to format the EFI partition ? ${partition2}
-    Choose No if it's already used by another system or Yes if it's a New partition"
-    options=("Yes" "No")
-    select_option $? 1 "${options[@]}"
-
-    case ${options[$?]} in
-        y|Y|yes|Yes|YES)
-        echo "EFI partition will be Formatted"
-        mkfs.vfat -F32 ${partition2};;
-        n|N|no|NO|No)
-        echo "Please make sure it's a valid EFI partition otherwise the following may fail";;
-        *) echo "Wrong option. Try again";efiformat;;
-    esac
-}
 
 #Formating partition
     efiformat
