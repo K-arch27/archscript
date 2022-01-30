@@ -136,6 +136,7 @@ swappartition () {
 
     case ${options[$?]} in
         y|Y|yes|Yes|YES)
+        lsblk
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         mkswap ${partition4}
         uuid4=$(lsblk ${partition4} -no UUID)
