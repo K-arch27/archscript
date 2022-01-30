@@ -141,13 +141,95 @@ swappartition () {
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         mkswap ${partition4}
         uuid4=$(lsblk ${partition4} -no UUID)
-        swapon UUID=${uuid4}
+        swapon UUID=${uuid4};;
         n|N|no|NO|No)
         echo "No Swap Partition are gonna be used"
         read -p "Press any key to resume";;
-        *) echo "Wrong option. Try again";efiformat;;
+        *) echo "Wrong option. Try again";swappartition;;
     esac
 }
+
+
+
+
+
+
+homefinal () {
+clear
+logo
+set_option HOMEPART "yes"
+set_option HOMEDEV $partition5
+}
+
+
+homeformat () {
+
+        #choice for Home Filesystem
+
+        echo -ne "Do you want Btrfs or Ext4 For Home ?"
+    
+    options=("Btrfs" "Ext4")
+    select_option $? 1 "${options[@]}"
+
+    case ${options[$?]} in
+        btrfs|Btrfs|BTRFS|b|B)
+        mkfs.btrfs -L HOME -m single ${partition5} -f
+        homefinal;;
+        ext4|Ext4|EXT4|e|E)
+        mkfs.ext4 -L HOME ${partition5}
+        homefinal;;
+        *) echo "Wrong option. Try again";homeformat;;
+    esac
+}
+
+homepartition2 () {
+        
+
+        #choice for Formatting Home or Not
+        logo
+        lsblk
+        read -p "Please enter your Home partition (EX: /dev/sda4): " partition5
+        echo -ne "Do you want to format Home ?"
+    
+    options=("Yes" "No")
+    select_option $? 1 "${options[@]}"
+
+    case ${options[$?]} in
+        y|Y|yes|Yes|YES)
+        homeformat;;
+        n|N|no|NO|No)
+        echo "Home Partition is gonna be used as is"
+        read -p "Press any key to resume"
+        homefinal;;
+        *) echo "Wrong option. Try again";homepartition2;;
+    esac
+}
+
+homepartition () {
+
+        #choice for Having Separate Home or Not
+
+
+        echo -ne "Do you want a separate Home partition ?"
+    
+    options=("Yes" "No")
+    select_option $? 1 "${options[@]}"
+
+    case ${options[$?]} in
+        y|Y|yes|Yes|YES)
+        clear
+        homepartition2;;
+
+
+        n|N|no|NO|No)
+        clear
+        echo "No Home Partition are gonna be used"
+        read -p "Press any key to resume";;
+        *) echo "Wrong option. Try again";homepartition;;
+    esac
+}
+
+
 
 logo () {
 echo -ne "
