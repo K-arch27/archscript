@@ -104,6 +104,48 @@ select_option() {
     return $(( $active_col + $active_row * $colmax ))
 }
 
+efiformat () {
+
+        #choice for formmating the EFI
+
+
+        echo -ne "Do you want to format the EFI partition ? ${partition2}
+    Choose No if it's already used by another system or Yes if it's a New partition"
+    options=("Yes" "No")
+    select_option $? 1 "${options[@]}"
+
+    case ${options[$?]} in
+        y|Y|yes|Yes|YES)
+        echo "EFI partition will be Formatted"
+        mkfs.vfat -F32 ${partition2};;
+        n|N|no|NO|No)
+        echo "Please make sure it's a valid EFI partition otherwise the following may fail";;
+        *) echo "Wrong option. Try again";efiformat;;
+    esac
+}
+
+swappartition () {
+
+        #choice for Having Swap or not
+
+
+        echo -ne "Do you have a Swap partition ?"
+    
+    options=("Yes" "No")
+    select_option $? 1 "${options[@]}"
+
+    case ${options[$?]} in
+        y|Y|yes|Yes|YES)
+        read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
+        mkswap ${partition4}
+        uuid4=$(lsblk ${partition4} -no UUID)
+        swapon UUID=${uuid4}
+        n|N|no|NO|No)
+        echo "No Swap Partition are gonna be used";;
+        *) echo "Wrong option. Try again";efiformat;;
+    esac
+}
+
 logo () {
 echo -ne "
 -------------------------------------------------------------------------
