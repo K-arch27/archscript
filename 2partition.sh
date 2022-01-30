@@ -7,28 +7,31 @@ source /archscript/config.sh
     logo
     lsblk
     read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
-    read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
+    clear
+    logo
+    efiformat
+    clear
+    logo
+    swappartition
+    clear
+    logo
+    lsblk
     read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
-    read -p "Please enter your Home partition : (EX: /dev/sda4 ) " partition5
-
-    mkswap ${partition4}
-
+    clear
+    logo
+    lsblk
+    homepartition
     clear
     logo
 
 
 #Formating partition
-    efiformat
     clear
-
     mkfs.btrfs -L ROOT -m single ${partition3} -f
-    mkfs.btrfs -L HOME -m single ${partition5} -f
+
 #Getting UUID of newly formated partition    
     uuid2=$(lsblk ${partition2} -no UUID)
-    uuid4=$(lsblk ${partition4} -no UUID)
     uuid3=$(lsblk ${partition3} -no UUID)
-
-    #uuid5=$(lsblk ${partition5} -no UUID) unused since it was giving out error when trying to mount home with uuid
 
 
 
@@ -99,8 +102,11 @@ source /archscript/config.sh
     mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
     mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
     mount UUID=${uuid2} /mnt/boot/ESP
-    mount ${partition5} /mnt/home/
-    swapon UUID=${uuid4}
+    
+   if $HOMEPART=="yes"
+   then
+    mount ${HOMEDEV} /mnt/home/
+    fi 
 	
 
 
