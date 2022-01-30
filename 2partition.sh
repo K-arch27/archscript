@@ -72,7 +72,7 @@ source /archscript/config.sh
     mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
     mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
     mount UUID="${EFIUUID}" /mnt/boot/ESP
-    
+    swapon "${SWAPUUID}"
    if $HOMEPART=="yes"
    then
     mount "${HOMEDEV}" /mnt/home/
