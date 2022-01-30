@@ -3,37 +3,9 @@ source /archscript/config.sh
 
 
 
-    clear
-    logo
-    lsblk
-    read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
-    clear
-    logo
-    efiformat
-    clear
-    logo
-    swappartition
-    clear
-    logo
-    lsblk
-    homepartition
-
-#Formating partition
-
-    clear
-    logo
-    lsblk
-    read -p "Please enter your Root partition : (EX: /dev/sda3 ) " partition3
-    clear
-    mkfs.btrfs -L ROOT -m single ${partition3} -f
-
-#Getting UUID of newly formated partition    
-    uuid2=$(lsblk ${partition2} -no UUID)
-    uuid3=$(lsblk ${partition3} -no UUID)
 
 
-
-    mount UUID=${uuid3} /mnt
+    mount UUID=${ROOTUUID} /mnt
 
 
     btrfs subvolume create /mnt/@
@@ -67,7 +39,7 @@ source /archscript/config.sh
     umount /mnt
 
 # mount @ subvolume
-    mount UUID=${uuid3} -o compress=zstd /mnt
+    mount UUID=${ROOTUUID} -o compress=zstd /mnt
 
 # make directories home, .snapshots, var, tmp
 
@@ -88,18 +60,18 @@ source /archscript/config.sh
 
 # mount subvolumes and partition
 
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/.snapshots /mnt/.snapshots
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/boot/grub /mnt/boot/grub
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/opt /mnt/opt
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/root /mnt/root
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/srv /mnt/srv
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/tmp /mnt/tmp
-    mount UUID=${uuid3} -o noatime,compress=zstd,ssd,commit=120,subvol=@/usr/local /mnt/usr/local
-    mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/cache /mnt/var/cache
-    mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/log,nodatacow /mnt/var/log
-    mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
-    mount UUID=${uuid3} -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
-    mount UUID=${uuid2} /mnt/boot/ESP
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/.snapshots /mnt/.snapshots
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/boot/grub /mnt/boot/grub
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/opt /mnt/opt
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/root /mnt/root
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/srv /mnt/srv
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/tmp /mnt/tmp
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/usr/local /mnt/usr/local
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/cache /mnt/var/cache
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/log,nodatacow /mnt/var/log
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
+    mount UUID=${EFIUUID} /mnt/boot/ESP
     
    if $HOMEPART=="yes"
    then
