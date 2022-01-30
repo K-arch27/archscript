@@ -38,4 +38,7 @@ bash strap.sh
 rm /strap.sh
 pacman -Syyu --noconfirm
 pacman -S paru octopi snap-pac-grub stacer nerd-fonts-fantasque-sans-mono --noconfirm
-
+SCRUB=$(systemd-escape --template btrfs-scrub@.timer --path /dev/disk/by-uuid/${uuid3})
+systemctl enable --now ${SCRUB}
+systemctl enable --now snapper-timeline.timer
+systemctl enable --now snapper-cleanup.timer
