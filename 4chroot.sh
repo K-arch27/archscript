@@ -66,6 +66,8 @@ echo -ne "
 
 grub-install --target=x86_64-efi --efi-directory=/boot/ESP --bootloader-id=GRUB --modules="normal test efi_gop efi_uga search echo linux all_video gfxmenu gfxterm_background gfxterm_menu gfxterm loadenv configfile gzio part_gpt btrfs"
 
+sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
+
 grub-mkconfig -o /boot/grub/grub.cfg
 
 sed -i 's/rootflags=subvol=${rootsubvol}//' /etc/grub.d/10_linux
