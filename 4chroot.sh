@@ -18,7 +18,7 @@ echo -ne "
                     Setup Language to EN and set Admin rights
 -------------------------------------------------------------------------
 "
-sed -i 's/^#en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /etc/locale.gen
+sed -i "s/^#${LANGLOCAL}/${LANGLOCAL}/" /etc/locale.gen
 locale-gen
 
 
