@@ -56,16 +56,30 @@ case ${options[$?]} in
 esac
 }
 
+localeselect () {
+echo -ne "
+Please select your locale from this list"
+# These are default key maps as presented in official arch repo archinstall
+options=(en_CA.UTF-8 en_HK.UTF-8 en_US.UTF-8 fr_CA.UTF-8 fr_FR.UTF-8 zh_CN.UTF-8 zh_TW.UTF-8 hu.UTF-8 it_IT.UTF-8 ja_JP.UTF-8 ru_RU.UTF-8 es_ES.UTF-8 de_DE.UTF-8 ar_SA.UTF-8 af_ZA.UTF-8)
+
+select_option $? 4 "${options[@]}"
+langlocale=${options[$?]}
+
+echo -ne "Your locale: ${langlocale} \n"
+set_option LANGLOCAL $langlocale
+}
+
+
 keymap () {
 echo -ne "
-Please select key board layout from this list"
+Please select keyboard layout from this list"
 # These are default key maps as presented in official arch repo archinstall
 options=(by ca cf cz de dk es et fa fi fr gr hu il it lt lv mk nl no pl ro ru sg ua uk us)
 
 select_option $? 4 "${options[@]}"
 keymap=${options[$?]}
 
-echo -ne "Your key boards layout: ${keymap} \n"
+echo -ne "Your keyboards layout: ${keymap} \n"
 set_option KEYMAP $keymap
 loadkeys $keymap
 }
