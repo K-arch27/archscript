@@ -142,7 +142,7 @@ swappartition () {
         read -p "Please enter your SWAP partition (EX: /dev/sda2): " partition4
         set_option SWAPPART $partition4
         mkswap $partition4
-        uuid4="$(lsblk ${partition4} -no UUID)"
+        uuid4=$(blkid -o value -s UUID $partition4)
         set_option SWAPUUID $uuid4;;
         n|N|no|NO|No)
         echo "No Swap Partition are gonna be used"
@@ -249,7 +249,7 @@ homepartition () {
     clear
     logo
     efiformat
-    uuid2=$(lsblk $partition2 -no UUID)
+    uuid2=$(blkid -o value -s UUID $partition2)
     set_option EFIUUID $uuid2
     clear
     logo
