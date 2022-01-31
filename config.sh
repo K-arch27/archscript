@@ -104,6 +104,9 @@ select_option() {
     return $(( $active_col + $active_row * $colmax ))
 }
 
+
+
+
 logo () {
 echo -ne "
 -------------------------------------------------------------------------
