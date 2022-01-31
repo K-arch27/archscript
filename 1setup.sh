@@ -72,7 +72,7 @@ loadkeys $keymap
 
 userinfo () {
 read -p "Please enter your username: " username
-set_option USERNAME ${username,,} # convert to lower case as in issue #109
+set_option USERNAME ${username,,} 
 while true; do
   echo -ne "Please enter your password: \n"
   read -s password # read password without echo
