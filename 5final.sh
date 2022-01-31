@@ -12,7 +12,7 @@ echo -ne "
 echo "$NAME_OF_MACHINE" > /etc/hostname
 timedatectl --no-ask-password set-timezone $TIMEZONE
 timedatectl --no-ask-password set-ntp 1
-localectl --no-ask-password set-locale LANG="en_CA.UTF-8" LC_TIME="en_CA.UTF-8"
+localectl --no-ask-password set-locale LANG="LANGLOCAL" LC_TIME="LANGLOCAL"
 ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc 
 # Set keymaps
