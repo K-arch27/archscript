@@ -265,7 +265,7 @@ homepartition () {
     set_option ROOTPART $partition3
     clear
     mkfs.btrfs -L ROOT -m single -f $partition3
-    uuid3=$(lsblk $partition3 -no UUID)
+    uuid3=$(blkid -o value -s UUID $partition3)
     set_option ROOTUUID $uuid3
 
 
