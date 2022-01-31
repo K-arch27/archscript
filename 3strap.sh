@@ -26,12 +26,6 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-
-loadkeys cf
-timedatectl --no-ask-password set-timezone $TIMEZONE
-timedatectl --no-ask-password set-ntp 1
-
-
 pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr intel-ucode btrfs-progs
 pacstrap /mnt networkmanager nano sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server snapper snap-pac fish starship neofetch firefox git
 
