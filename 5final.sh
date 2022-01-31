@@ -20,7 +20,7 @@ echo KEYMAP=$KEYMAP > /etc/vconsole.conf
 loadkeys $KEYMAP
 localectl --no-ask-password set-keymap $KEYMAP
 localectl set-x11-keymap --no-convert "$KEYMAP"
-echo LANG="$LANGLOCAL" > /etc/locale.conf
+echo "LANG=${LANGLOCAL}" > /etc/locale.conf
 
 echo -ne "
 
