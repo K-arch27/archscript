@@ -39,7 +39,7 @@ source /archscript/config.sh
     umount /mnt
 
 # mount @ subvolume
-    mount UUID="${ROOTUUID}" -o compress=zstd /mnt
+    mount UUID=${ROOTUUID} -o compress=zstd /mnt
 
 # make directories home, .snapshots, var, tmp
 
@@ -60,22 +60,23 @@ source /archscript/config.sh
 
 # mount subvolumes and partition
 
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/.snapshots /mnt/.snapshots
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/boot/grub /mnt/boot/grub
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/opt /mnt/opt
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/root /mnt/root
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/srv /mnt/srv
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/tmp /mnt/tmp
-    mount UUID="${ROOTUUID}" -o noatime,compress=zstd,ssd,commit=120,subvol=@/usr/local /mnt/usr/local
-    mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/cache /mnt/var/cache
-    mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/log,nodatacow /mnt/var/log
-    mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
-    mount UUID="${ROOTUUID}" -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
-    mount UUID="${EFIUUID}" /mnt/boot/ESP
-    swapon "${SWAPUUID}"
-   if $HOMEPART=="yes"
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/.snapshots /mnt/.snapshots
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/boot/grub /mnt/boot/grub
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/opt /mnt/opt
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/root /mnt/root
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/srv /mnt/srv
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/tmp /mnt/tmp
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/usr/local /mnt/usr/local
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/cache /mnt/var/cache
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/log,nodatacow /mnt/var/log
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
+    mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
+    mount UUID=${EFIUUID} /mnt/boot/ESP
+    swapon UUID=${SWAPUUID}
+    
+   if [ "$HOMEPART" = "yes" ]
    then
-    mount "${HOMEDEV}" /mnt/home/
+    mount ${HOMEDEV} /mnt/home/
     fi 
 	
 
