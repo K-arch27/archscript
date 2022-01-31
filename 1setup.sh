@@ -257,6 +257,9 @@ homepartition () {
     timezone
     clear
     logo
+    localeselect
+    clear
+    logo
     lsblk
     read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
     set_option EFIPART $partition2
