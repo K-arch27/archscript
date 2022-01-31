@@ -12,7 +12,7 @@ echo -ne "
 echo "$NAME_OF_MACHINE" > /etc/hostname
 timedatectl --no-ask-password set-timezone $TIMEZONE
 timedatectl --no-ask-password set-ntp 1
-localectl --no-ask-password set-locale LANG="LANGLOCAL" LC_TIME="LANGLOCAL"
+localectl --no-ask-password set-locale LANG="$LANGLOCAL" LC_TIME="$LANGLOCAL"
 ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc 
 # Set keymaps
@@ -20,7 +20,7 @@ echo KEYMAP=$KEYMAP > /etc/vconsole.conf
 loadkeys $KEYMAP
 localectl --no-ask-password set-keymap $KEYMAP
 localectl set-x11-keymap --no-convert "$KEYMAP"
-echo LANG=en_CA.UTF-8 > /etc/locale.conf
+echo LANG="$LANGLOCAL" > /etc/locale.conf
 
 echo -ne "
 
