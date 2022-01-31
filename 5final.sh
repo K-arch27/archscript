@@ -16,11 +16,12 @@ localectl --no-ask-password set-locale LANG="en_CA.UTF-8" LC_TIME="en_CA.UTF-8"
 ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc 
 # Set keymaps
+echo KEYMAP=$KEYMAP > /etc/vconsole.conf
+loadkeys $KEYMAP
 localectl --no-ask-password set-keymap $KEYMAP
 localectl set-x11-keymap --no-convert "$KEYMAP"
 echo LANG=en_CA.UTF-8 > /etc/locale.conf
-echo KEYMAP=$KEYMAP > /etc/vconsole.conf
-loadkeys $KEYMAP
+
 echo -ne "
 
 -------------------------------------------------------------------------
