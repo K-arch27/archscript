@@ -5,7 +5,7 @@ source /archscript/config.sh
 
 
 
-    mount UUID="${ROOTUUID}" /mnt
+    mount UUID=${ROOTUUID} /mnt
 
 
     btrfs subvolume create /mnt/@
