@@ -15,7 +15,7 @@
                     Updating Mirrorlist
 -------------------------------------------------------------------------
 "
-    #reflector --verbose -a 48 -c canada -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+    reflector --verbose -a 48 -c canada -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 
     clear
 
