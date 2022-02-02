@@ -25,13 +25,18 @@ echo -ne "
                     Straping Setup 
 -------------------------------------------------------------------------
 "
+#My choice of firmware and shell , can be changed by yours but beware of modifiying the shell in the useradd command
+pacstrap /mnt linux-zen linux-zen-headers fish
 
-pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr intel-ucode btrfs-progs
-pacstrap /mnt networkmanager nano sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server snapper snap-pac fish starship neofetch firefox git
+
+
+#required Package
+pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr intel-ucode btrfs-progs
+pacstrap /mnt networkmanager sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server snapper snap-pac  
 
 #those line bellow can be changed for another DE/Apps set
 pacstrap /mnt  plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
-pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake
+pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
 pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
 echo -ne "
 
