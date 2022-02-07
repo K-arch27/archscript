@@ -35,19 +35,19 @@ pacstrap /mnt base base-devel fish linux-firmware e2fsprogs dosfstools grub grub
 
 #Kernel Choice installation
 
-if KERNELCHOICE = "linux" then
+if "$KERNELCHOICE" = "linux" then
 
       pacstrap /mnt linux linux-headers
 
-   elif KERNELCHOICE = "linux-zen" then
+   elif "$KERNELCHOICE" = "linux-zen" then
 
       pacstrap /mnt linux-zen linux-zen-headers
 
-   elif KERNELCHOICE = "linux-hardened" then
+   elif "$KERNELCHOICE" = "linux-hardened" then
 
       pacstrap /mnt linux-hardened linux-hardened-headers
 
-   elif KERNELCHOICE = "linux-lts" then
+   elif "$KERNELCHOICE" = "linux-lts" then
 
       pacstrap /mnt linux-lts linux-lts-headers
 
