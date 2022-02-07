@@ -84,6 +84,20 @@ set_option KEYMAP $keymap
 loadkeys $keymap
 }
 
+
+desktopenv () {
+echo -ne "
+Please select a Gui from this list"
+# These are default key maps as presented in official arch repo archinstall
+options=(kaidaplasma fullplasma minimalplasma gnome xfce MATE cinnamon deepin lxqt i3gaps dwm xmonad icewm none)
+
+select_option $? 4 "${options[@]}"
+dechoice=${options[$?]}
+
+echo -ne "Your Gui : ${keymap} \n"
+set_option DECHOICE $dechoice
+}
+
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} 
@@ -284,6 +298,8 @@ homepartition () {
     mkfs.btrfs -L ROOT -m single -f $partition3
     uuid3=$(blkid -o value -s UUID $partition3)
     set_option ROOTUUID $uuid3
-
+    clear
+    logo
+    desktopenv
 
     
