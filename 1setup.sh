@@ -89,7 +89,7 @@ desktopenv () {
 echo -ne "
 Please select a Gui from this list"
 # These are default key maps as presented in official arch repo archinstall
-options=(kaidaplasma fullplasma minimalplasma gnome xfce MATE cinnamon deepin lxqt i3gaps dwm xmonad icewm none)
+options=(kaidaplasma fullplasma minimalplasma gnome fullgnome xfce MATE cinnamon deepin lxqt i3gaps dwm xmonad icewm none)
 
 select_option $? 4 "${options[@]}"
 dechoice=${options[$?]}
