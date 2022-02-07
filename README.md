@@ -18,7 +18,7 @@ Having a Home Partition (can be the same as Root but i don't recommend it, Will 
 
 2: pacman -Sy git 
 
-( sometimes there is a key problem with the Arch Iso and you have to do those 4 command before being able to install Git : 
+( sometimes there is a key problem with the Arch Iso and you have to do those commands before being able to install Git : 
 
 > killall gpg-agent
 
