@@ -18,20 +18,6 @@ Having a Home Partition (can be the same as Root but i don't recommend it, Will 
 
 2: $ pacman -Sy git 
 
-( sometimes there is a key problem with the Arch Iso and you have to do those commands before being able to install Git : 
-
-> killall gpg-agent
-
-> rm -rf /etc/pacman.d/gnupg
-
-> pacman-key --init
-
-> pacman-key --populate archlinux
-
-> pacman -Sy git
-
-It should work now )
-
 3: $ git clone https://github.com/K-arch27/archscript.git
 
 4: $ cd archscript
@@ -43,3 +29,20 @@ It should work now )
 7: Make the choice that suit yourself
 
 8: Sit back and enjoy
+
+
+### ------------Troubleshooting------------
+
+ sometimes there is a key problem with the Arch Iso and you have to do those commands before being able to install Git : 
+
+> killall gpg-agent
+
+> rm -rf /etc/pacman.d/gnupg
+
+> pacman-key --init
+
+> pacman-key --populate archlinux
+
+> pacman -Sy git
+
+The git installation should now work
