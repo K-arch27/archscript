@@ -35,19 +35,19 @@ pacstrap /mnt base base-devel fish linux-firmware e2fsprogs dosfstools grub grub
 
 #Kernel Choice installation
 
-if "$KERNELCHOICE" = "linux" then
+if [ "$KERNELCHOICE" = "linux" ]; then
 
       pacstrap /mnt linux linux-headers
 
-   elif "$KERNELCHOICE" = "linux-zen" then
+   elif [ "$KERNELCHOICE" = "linux-zen" ]; then
 
       pacstrap /mnt linux-zen linux-zen-headers
 
-   elif "$KERNELCHOICE" = "linux-hardened" then
+   elif [ "$KERNELCHOICE" = "linux-hardened" ]; then
 
       pacstrap /mnt linux-hardened linux-hardened-headers
 
-   elif "$KERNELCHOICE" = "linux-lts" then
+   elif [ "$KERNELCHOICE" = "linux-lts" ]; then
 
       pacstrap /mnt linux-lts linux-lts-headers
 
@@ -60,68 +60,68 @@ pacstrap /mnt networkmanager sof-firmware man-db man-pages texinfo
 
 
 #GUI choice installation
-if "$DECHOICE" = "kaidaplasma" then
+if [ "$DECHOICE" = "kaidaplasma" ]; then
       pacstrap /mnt  xorg xorg-server plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
       pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
       pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
 
-   elif "$DECHOICE" = "fullplasma" then
+   elif [ "$DECHOICE" = "fullplasma" ]; then
 
       pacstrap /mnt xorg plasma plasma-wayland-session kde-applications
 
-   elif "$DECHOICE" = "minimalplasma" then
+   elif [ "$DECHOICE" = "minimalplasma" ]; then
 
       pacstrap /mnt xorg plasma-desktop sddm 
 
-   elif "$DECHOICE" = "gnome" then
+   elif [ "$DECHOICE" = "gnome" ]; then
 
       pacstrap /mnt gnome
 
-   elif "$DECHOICE" = "fullgnome" then
+   elif [ "$DECHOICE" = "fullgnome" ]; then
 
       pacstrap /mnt gnome gnome-extra
       
-   elif "$DECHOICE" = "xfce" then
+   elif [ "$DECHOICE" = "xfce" ]; then
 
       pacstrap /mnt xfce4 lightdm lightdm-gtk-greeter
 
-   elif "$DECHOICE" = "fullxfce" then
+   elif [ "$DECHOICE" = "fullxfce" ]; then
 
       pacstrap /mnt xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
-   elif "$DECHOICE" = "MATE" then
+   elif [ "$DECHOICE" = "MATE" ]; then
 
       pacstrap /mnt mate lightdm lightdm-gtk-greeter
 
-   elif "$DECHOICE" = "fullMATE" then
+   elif [ "$DECHOICE" = "fullMATE" ]; then
 
       pacstrap /mnt mate mate-extra lightdm lightdm-gtk-greeter
       
-   elif "$DECHOICE" = "cinnamon" then
+   elif [ "$DECHOICE" = "cinnamon" ]; then
 
       pacstrap /mnt cinnamon sddm
 
-   elif "$DECHOICE" = "deepin" then
+   elif [ "$DECHOICE" = "deepin" ]; then
 
       pacstrap /mnt deepin lightdm lightdm-gtk-greeter
 
-   elif "$DECHOICE" = "fulldeepin" then
+   elif [ "$DECHOICE" = "fulldeepin" ]; then
 
       pacstrap /mnt deepin deepin-extra lightdm lightdm-gtk-greeter
       
-   elif "$DECHOICE" = "lxqt" then
+   elif [ "$DECHOICE" = "lxqt" ]; then
 
       pacstrap /mnt xorg lxqt breeze-icons sddm
 
-   elif "$DECHOICE" = "i3gaps" then
+   elif [ "$DECHOICE" = "i3gaps" ]; then
 
       pacstrap /mnt xorg xorg-init xterm i3-gaps ttf-dejavu dmenu i3status lightdm lightdm-gtk-greeter
 
-   elif "$DECHOICE" = "xmonad" then
+   elif [ "$DECHOICE" = "xmonad" ]; then
 
       pacstrap /mnt xmonad xmonad-contrib lightdm lightdm-gtk-greeter xterm 
       
-  elif "$DECHOICE" = "openbox" then
+  elif [ "$DECHOICE" = "openbox" ]; then
 
       pacstrap /mnt openbox ttf-dejavu sddm
 
