@@ -52,7 +52,7 @@ sed -i 's|TIMELINE_LIMIT_YEARLY="10"|TIMELINE_LIMIT_YEARLY="0"|' /etc/snapper/co
 
 #activating the auto-cleanup
 SCRUB=$(systemd-escape --template btrfs-scrub@.timer --path /dev/disk/by-uuid/${ROOTUUID})
-systemctl enable --now ${SCRUB}
-systemctl enable --now snapper-timeline.timer
-systemctl enable --now snapper-cleanup.timer
+systemctl enable ${SCRUB}
+systemctl enable snapper-timeline.timer
+systemctl enable snapper-cleanup.timer
 
