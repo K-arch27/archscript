@@ -74,10 +74,11 @@ source /archscript/config.sh
     mount UUID=${EFIUUID} /mnt/boot/ESP
     swapon UUID=${SWAPUUID}
     
-   if [ "$HOMEPART" = "yes" ]
-   then
+   if [ "$HOMEPART" = "yes" ]; then
+   
     mount ${HOMEDEV} /mnt/home/
-    fi 
+   
+   fi 
 	
 
 
