@@ -16,7 +16,7 @@ Having a Home Partition (can be the same as Root but i don't recommend it, Will 
 
 1: Boot on Arch Iso
 
-2:$ pacman -Sy git 
+2: $ pacman -Sy git 
 
 ( sometimes there is a key problem with the Arch Iso and you have to do those commands before being able to install Git : 
 
@@ -32,13 +32,13 @@ Having a Home Partition (can be the same as Root but i don't recommend it, Will 
 
 It should work now )
 
-3:$ git clone https://github.com/K-arch27/archscript.git
+3: $ git clone https://github.com/K-arch27/archscript.git
 
-4:$ cd archscript
+4: $ cd archscript
 
-5:$ chmod +x ./start.sh
+5: $ chmod +x ./start.sh
 
-6:$ ./start.sh
+6: $ ./start.sh
 
 7: Make the choice that suit yourself
 
