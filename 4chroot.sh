@@ -65,67 +65,67 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-if "$DECHOICE" = "kaidaplasma" then
+if [ "$DECHOICE" = "kaidaplasma" ]; then
 
       systemctl enable sddm
 
-   elif "$DECHOICE" = "fullplasma" then
+   elif [ "$DECHOICE" = "fullplasma" ]; then
 
       systemctl enable sddm
 
-   elif "$DECHOICE" = "minimalplasma" then
+   elif [ "$DECHOICE" = "minimalplasma" ]; then
 
       systemctl enable sddm
 
-   elif "$DECHOICE" = "gnome" then
+   elif [ "$DECHOICE" = "gnome" ]; then
 
       systemctl enable gdm
 
-   elif "$DECHOICE" = "fullgnome" then
+   elif [ "$DECHOICE" = "fullgnome" ]; then
 
       systemctl enable gdm
       
-   elif "$DECHOICE" = "xfce" then
+   elif [ "$DECHOICE" = "xfce" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "fullxfce" then
+   elif [ "$DECHOICE" = "fullxfce" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "MATE" then
-
-      systemctl enable lightdm
-      
-   elif "$DECHOICE" = "fullMATE" then
+   elif [ "$DECHOICE" = "MATE" ]; then
 
       systemctl enable lightdm
       
-   elif "$DECHOICE" = "cinnamon" then
+   elif [ "$DECHOICE" = "fullMATE" ]; then
+
+      systemctl enable lightdm
+      
+   elif [ "$DECHOICE" = "cinnamon" ]; then
 
       systemctl enable sddm
 
-   elif "$DECHOICE" = "deepin" then
+   elif [ "$DECHOICE" = "deepin" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "fulldeepin" then
+   elif [ "$DECHOICE" = "fulldeepin" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "lxqt" then
+   elif [ "$DECHOICE" = "lxqt" ]; then
 
       systemctl enable sddm
 
-   elif "$DECHOICE" = "i3gaps" then
+   elif [ "$DECHOICE" = "i3gaps" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "xmonad" then
+   elif [ "$DECHOICE" = "xmonad" ]; then
 
       systemctl enable lightdm
 
-   elif "$DECHOICE" = "openbox" then
+   elif [ "$DECHOICE" = "openbox" ]; then
 
       systemctl enable sddm
    else
