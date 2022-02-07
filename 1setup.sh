@@ -98,6 +98,19 @@ echo -ne "Your Gui : ${keymap} \n"
 set_option DECHOICE $dechoice
 }
 
+kernelselect () {
+echo -ne "
+Please select a kernel from this list"
+# These are default key maps as presented in official arch repo archinstall
+options=(linux linux-zen linux-hardened linux-lts)
+
+select_option $? 4 "${options[@]}"
+dechoice=${options[$?]}
+
+echo -ne "Your kernel : ${kernelchoice} \n"
+set_option KERNELCHOICE $kernelchoice
+}
+
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} 
@@ -301,5 +314,7 @@ homepartition () {
     clear
     logo
     desktopenv
-
+    clear
+    logo
+    kernelselect
     
