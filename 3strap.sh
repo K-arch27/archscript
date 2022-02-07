@@ -30,16 +30,110 @@ echo -ne "
 
 
 #required Package
-pacstrap /mnt base base-devel linux-zen linux-zen-headers fish linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs
-pacstrap /mnt networkmanager sof-firmware ntfs-3g man-db man-pages texinfo xorg xorg-server snapper snap-pac
 
-#My choice of firmware and shell can be changed for yours but don't forget of also modifiying the shell in the useradd command
+pacstrap /mnt base base-devel fish linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
+
+#Kernel Choice installation
+
+if KERNELCHOICE = "linux" then
+
+      pacstrap /mnt linux linux-headers
+
+   elif KERNELCHOICE = "linux-zen" then
+
+      pacstrap /mnt linux-zen linux-zen-headers
+
+   elif KERNELCHOICE = "linux-hardened" then
+
+      pacstrap /mnt linux-hardened linux-hardened-headers
+
+   elif KERNELCHOICE = "linux-lts" then
+
+      pacstrap /mnt linux-lts linux-lts-headers
+
+fi
+
+#Optionnal but usefull packages
+
+pacstrap /mnt networkmanager sof-firmware man-db man-pages texinfo 
 
 
-#those line bellow can be changed for another DE/Apps set
-pacstrap /mnt  plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
-pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
-pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
+
+#GUI choice installation
+if "$DECHOICE" = "kaidaplasma" then
+      pacstrap /mnt  xorg xorg-server plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
+      pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
+      pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
+
+   elif "$DECHOICE" = "fullplasma" then
+
+      pacstrap /mnt xorg plasma plasma-wayland-session kde-applications
+
+   elif "$DECHOICE" = "minimalplasma" then
+
+      pacstrap /mnt xorg plasma-desktop sddm 
+
+   elif "$DECHOICE" = "gnome" then
+
+      pacstrap /mnt gnome
+
+   elif "$DECHOICE" = "fullgnome" then
+
+      pacstrap /mnt gnome gnome-extra
+      
+   elif "$DECHOICE" = "xfce" then
+
+      pacstrap /mnt xfce4 lightdm lightdm-gtk-greeter
+
+   elif "$DECHOICE" = "fullxfce" then
+
+      pacstrap /mnt xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+
+   elif "$DECHOICE" = "MATE" then
+
+      pacstrap /mnt mate lightdm lightdm-gtk-greeter
+
+   elif "$DECHOICE" = "fullMATE" then
+
+      pacstrap /mnt mate mate-extra lightdm lightdm-gtk-greeter
+      
+   elif "$DECHOICE" = "cinnamon" then
+
+      pacstrap /mnt cinnamon sddm
+
+   elif "$DECHOICE" = "deepin" then
+
+      pacstrap /mnt deepin lightdm lightdm-gtk-greeter
+
+   elif "$DECHOICE" = "fulldeepin" then
+
+      pacstrap /mnt deepin deepin-extra lightdm lightdm-gtk-greeter
+      
+   elif "$DECHOICE" = "lxqt" then
+
+      pacstrap /mnt xorg lxqt breeze-icons sddm
+
+   elif "$DECHOICE" = "i3gaps" then
+
+      pacstrap /mnt xorg xorg-init xterm i3-gaps ttf-dejavu dmenu i3status lightdm lightdm-gtk-greeter
+
+   elif "$DECHOICE" = "xmonad" then
+
+      pacstrap /mnt xmonad xmonad-contrib lightdm lightdm-gtk-greeter xterm 
+      
+  elif "$DECHOICE" = "openbox" then
+
+      pacstrap /mnt openbox ttf-dejavu sddm
+
+   else
+
+      echo -ne "no Gui was choosen so no display manager will be initialized"
+
+fi
+
+
+
+
 echo -ne "
 
 -------------------------------------------------------------------------
