@@ -101,7 +101,6 @@ set_option DECHOICE $dechoice
 kernelselect () {
 echo -ne "
 Please select a kernel from this list"
-# These are default key maps as presented in official arch repo archinstall
 options=(linux linux-zen linux-hardened linux-lts)
 
 select_option $? 4 "${options[@]}"
