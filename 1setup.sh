@@ -104,7 +104,7 @@ Please select a kernel from this list"
 options=(linux linux-zen linux-hardened linux-lts)
 
 select_option $? 4 "${options[@]}"
-dechoice=${options[$?]}
+kernelchoice=${options[$?]}
 
 echo -ne "Your kernel : ${kernelchoice} \n"
 set_option KERNELCHOICE $kernelchoice
