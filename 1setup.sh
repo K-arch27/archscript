@@ -8,7 +8,7 @@
     pacman-key --populate archlinux
     pacman -Sy
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-    pacman -S --noconfirm btrfs-progs gptfdisk reflector rsync
+    pacman -S --noconfirm btrfs-progs gptfdisk reflector rsync glibc
     timedatectl set-ntp true
     echo -ne "
 -------------------------------------------------------------------------
