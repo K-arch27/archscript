@@ -14,7 +14,6 @@ source /archscript/config.sh
 	btrfs subvolume create /mnt/@/.snapshots/1/snapshot
 	mkdir /mnt/@/boot
 	btrfs subvolume create /mnt/@/boot/grub
-	btrfs subvolume create /mnt/@/opt
 	btrfs subvolume create /mnt/@/root
 	btrfs subvolume create /mnt/@/srv
 	btrfs subvolume create /mnt/@/tmp
@@ -45,9 +44,7 @@ source /archscript/config.sh
 
 	mkdir /mnt/.snapshots
 	mkdir -p /mnt/boot/grub
-	mkdir /mnt/opt
 	mkdir /mnt/root
-	mkdir /mnt/srv
 	mkdir /mnt/tmp
 	mkdir -p /mnt/usr/local
 	mkdir -p /mnt/var/cache
@@ -62,9 +59,7 @@ source /archscript/config.sh
 
     mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/.snapshots /mnt/.snapshots
     mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/boot/grub /mnt/boot/grub
-    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/opt /mnt/opt
     mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/root /mnt/root
-    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/srv /mnt/srv
     mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/tmp /mnt/tmp
     mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/usr/local /mnt/usr/local
     mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/cache /mnt/var/cache
