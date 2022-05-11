@@ -283,6 +283,18 @@ homepartition2 () {
     esac
 }
 
+homesnapchoice () {
+echo -ne "
+Do you want /Home to be included inside snapshot ?"
+
+options=(yes no)
+
+select_option $? 4 "${options[@]}"
+homesnap=${options[$?]}
+
+set_option HOMESNAP $homesnap
+}
+
 homepartition () {
 
         #choice for Having Separate Home or Not
@@ -296,13 +308,17 @@ homepartition () {
     case ${options[$?]} in
         y|Y|yes|Yes|YES)
         clear
+        logo
         homepartition2;;
 
 
         n|N|no|NO|No)
         clear
+        logo
         echo "No Home Partition are gonna be used"
-        read -p "Press any key to resume";;
+        homesnapchoice;;
+
+        
         *) echo "Wrong option. Try again";homepartition;;
     esac
 }
