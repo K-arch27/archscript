@@ -134,6 +134,18 @@ echo -ne "Your choice : ${aurchoice} \n"
 set_option AURCHOICE $aurchoice
 }
 
+blackarch () {
+echo -ne "
+Do you want the BlackArch repo ?"
+options=(no yes)
+
+select_option $? 4 "${options[@]}"
+blackchoice=${options[$?]}
+
+echo -ne "Your choice : ${aurchoice} \n"
+set_option BLACKCHOICE $blackchoice
+}
+
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} 
