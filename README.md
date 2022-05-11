@@ -3,6 +3,11 @@
 
 ### -----------Important Information-----------
 
+
+
+
+### -----------Important Information-----------
+
 0: Pre-requisite
 Having an EFI partition (can be shared with windows , just say no when ask if you want to format it)
 
