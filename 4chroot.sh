@@ -46,6 +46,10 @@ if [ "$SHELLCHOICE" = "bash" ]; then
       useradd -m -G wheel,libvirt -s /bin/bash $USERNAME
    elif [ "$SHELLCHOICE" = "fish" ]; then
       useradd -m -G wheel,libvirt -s /bin/fish $USERNAME
+         elif [ "$SHELLCHOICE" = "osh" ]; then
+      useradd -m -G wheel,libvirt -s /bin/osh $USERNAME
+         elif [ "$SHELLCHOICE" = "zsh" ]; then
+      useradd -m -G wheel,libvirt -s /bin/zsh $USERNAME
 fi
 
 
