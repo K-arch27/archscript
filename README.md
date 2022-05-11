@@ -5,10 +5,15 @@
 
 
 Choice of Desktop environements/Tiling Manager
+
 Choice of Shell (bash, fish, oil, zsh)
+
 Choice of Aur helper (yay, paru, octopi + yay, octopi + paru)
+
 Choice for BlackArch Repo
+
 Chaoctic-aur repo is added for the installation of snap-pac-grub
+
 
 
 ### -----------Important Information-----------
