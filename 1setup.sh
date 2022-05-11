@@ -88,7 +88,7 @@ loginshell () {
 echo -ne "
 Please select a shell from this list for using with your user (root will still use bash by default)"
 
-options=(bash fish)
+options=(bash fish osh zsh)
 
 select_option $? 4 "${options[@]}"
 shellchoice=${options[$?]}
