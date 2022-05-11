@@ -5,12 +5,8 @@
 
 0: Pre-requisite
 Having an EFI partition (can be shared with windows , just say no when ask if you want to format it)
-
-Having a Swap Partition (will make change in the future for it to be optionnal)
-
 Having a root Partition 
-
-Having a Home Partition (can be the same as Root but i don't recommend it, Will make change in the future for it to be optionnal)
+SWAP and home are optionnal
 
 ### ------------Install Instruction------------
 
@@ -33,15 +29,10 @@ Having a Home Partition (can be the same as Root but i don't recommend it, Will 
 
 ### ------------Troubleshooting------------
 
- sometimes there is a key problem with the Arch Iso and you have to do those commands before being able to install Git : 
+ sometimes there is a key problem with the Arch Iso and you have to do this command before being able to install Git : 
 
-> killall gpg-agent
 
-> rm -rf /etc/pacman.d/gnupg
-
-> pacman-key --init
-
-> pacman-key --populate archlinux
+> pacman -Sy archlinux-keyring
 
 > pacman -Sy git
 
