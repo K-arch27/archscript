@@ -84,11 +84,23 @@ set_option KEYMAP $keymap
 loadkeys $keymap
 }
 
+loginshell () {
+echo -ne "
+Please select a shell from this list for using with your user (root will still use bash by default)"
+
+options=(bash fish)
+
+select_option $? 4 "${options[@]}"
+shellchoice=${options[$?]}
+
+echo -ne "Your Gui : ${keymap} \n"
+set_option SHELLCHOICE $shellchoice
+}
+
 
 desktopenv () {
 echo -ne "
 Please select a Gui from this list"
-# These are default key maps as presented in official arch repo archinstall
 options=(kaidaplasma fullplasma minimalplasma gnome fullgnome xfce fullxfce fullMATE MATE cinnamon fulldeepin deepin lxqt i3gaps xmonad openbox none)
 
 select_option $? 4 "${options[@]}"
@@ -310,6 +322,9 @@ homepartition () {
     mkfs.btrfs -L ROOT -m single -f $partition3
     uuid3=$(blkid -o value -s UUID $partition3)
     set_option ROOTUUID $uuid3
+    clear
+    logo
+    loginshell
     clear
     logo
     desktopenv
