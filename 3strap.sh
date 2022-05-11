@@ -93,19 +93,19 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
       
    elif [ "$DECHOICE" = "xfce" ]; then
 
-      pacstrap /mnt xfce4 lightdm lightdm-gtk-greeter
+      pacstrap /mnt xfce4 sddm 
 
    elif [ "$DECHOICE" = "fullxfce" ]; then
 
-      pacstrap /mnt xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+      pacstrap /mnt xfce4 xfce4-goodies sddm
 
    elif [ "$DECHOICE" = "MATE" ]; then
 
-      pacstrap /mnt mate lightdm lightdm-gtk-greeter
+      pacstrap /mnt mate sddm
 
    elif [ "$DECHOICE" = "fullMATE" ]; then
 
-      pacstrap /mnt mate mate-extra lightdm lightdm-gtk-greeter
+      pacstrap /mnt mate mate-extra sddm
       
    elif [ "$DECHOICE" = "cinnamon" ]; then
 
@@ -113,11 +113,11 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 
    elif [ "$DECHOICE" = "deepin" ]; then
 
-      pacstrap /mnt deepin lightdm lightdm-gtk-greeter
+      pacstrap /mnt deepin sddm
 
    elif [ "$DECHOICE" = "fulldeepin" ]; then
 
-      pacstrap /mnt deepin deepin-extra lightdm lightdm-gtk-greeter
+      pacstrap /mnt deepin deepin-extra sddm
       
    elif [ "$DECHOICE" = "lxqt" ]; then
 
@@ -125,11 +125,11 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 
    elif [ "$DECHOICE" = "i3gaps" ]; then
 
-      pacstrap /mnt xorg xorg-init xterm i3-gaps ttf-dejavu dmenu i3status lightdm lightdm-gtk-greeter
+      pacstrap /mnt xorg xorg-init xterm i3-gaps ttf-dejavu dmenu i3status sddm
 
    elif [ "$DECHOICE" = "xmonad" ]; then
 
-      pacstrap /mnt xmonad xmonad-contrib lightdm lightdm-gtk-greeter xterm 
+      pacstrap /mnt xmonad xmonad-contrib lightdm sddm
       
   elif [ "$DECHOICE" = "openbox" ]; then
 
