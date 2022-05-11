@@ -125,7 +125,7 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 
    elif [ "$DECHOICE" = "i3gaps" ]; then
 
-      pacstrap /mnt xorg xorg-init xterm i3-gaps ttf-dejavu dmenu i3status sddm
+      pacstrap /mnt xorg xorg-xinit xterm i3-gaps ttf-dejavu dmenu i3status sddm
 
    elif [ "$DECHOICE" = "xmonad" ]; then
 
