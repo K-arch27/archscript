@@ -30,8 +30,14 @@ echo -ne "
 
 
 #required Package
+if [ "$SHELLCHOICE" = "bash" ]; then
+pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
+   elif [ "$SHELLCHOICE" = "fish" ]; then
+      pacstrap /mnt base base-devel fish linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
+fi
 
-pacstrap /mnt base base-devel fish linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
+
+
 
 #Kernel Choice installation
 
