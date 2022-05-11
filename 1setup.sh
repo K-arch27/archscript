@@ -7,6 +7,7 @@
     pacman-key --init
     pacman-key --populate archlinux
     pacman -Sy
+    pacman -Sy archlinux-keyring --needed --noconfirm
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
     pacman -S --noconfirm btrfs-progs gptfdisk reflector rsync glibc
     timedatectl set-ntp true
