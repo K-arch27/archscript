@@ -358,3 +358,6 @@ homepartition () {
     clear
     logo
     AurHelper
+    clear
+    logo
+    blackarch
