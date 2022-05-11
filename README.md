@@ -5,7 +5,9 @@
 
 0: Pre-requisite
 Having an EFI partition (can be shared with windows , just say no when ask if you want to format it)
+
 Having a root Partition 
+
 SWAP and home are optionnal
 
 ### ------------Install Instruction------------
