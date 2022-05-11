@@ -122,6 +122,18 @@ echo -ne "Your kernel : ${kernelchoice} \n"
 set_option KERNELCHOICE $kernelchoice
 }
 
+AurHelper () {
+echo -ne "
+Please select an aur helper from this list"
+options=(none yay paru octopi-paru octopi-yay)
+
+select_option $? 4 "${options[@]}"
+aurchoice=${options[$?]}
+
+echo -ne "Your choice : ${aurchoice} \n"
+set_option AURCHOICE $aurchoice
+}
+
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} 
@@ -331,4 +343,6 @@ homepartition () {
     clear
     logo
     kernelselect
-    
+    clear
+    logo
+    AurHelper
