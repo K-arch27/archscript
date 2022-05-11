@@ -41,7 +41,14 @@ echo -ne "
 "
 
 groupadd libvirt
-useradd -m -G wheel,libvirt -s /bin/fish $USERNAME
+
+if [ "$SHELLCHOICE" = "bash" ]; then
+      useradd -m -G wheel,libvirt -s /bin/bash $USERNAME
+   elif [ "$SHELLCHOICE" = "fish" ]; then
+      useradd -m -G wheel,libvirt -s /bin/fish $USERNAME
+fi
+
+
 
 # use chpasswd to enter $USERNAME:$password
 echo "$USERNAME:$PASSWORD" | chpasswd
@@ -87,19 +94,19 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
       
    elif [ "$DECHOICE" = "xfce" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "fullxfce" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "MATE" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
       
    elif [ "$DECHOICE" = "fullMATE" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
       
    elif [ "$DECHOICE" = "cinnamon" ]; then
 
@@ -107,11 +114,11 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 
    elif [ "$DECHOICE" = "deepin" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "fulldeepin" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "lxqt" ]; then
 
@@ -119,11 +126,11 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 
    elif [ "$DECHOICE" = "i3gaps" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "xmonad" ]; then
 
-      systemctl enable lightdm
+      systemctl enable sddm
 
    elif [ "$DECHOICE" = "openbox" ]; then
 
