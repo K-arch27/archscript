@@ -17,6 +17,11 @@ source /archscript/config.sh
 	btrfs subvolume create /mnt/@/root
 	btrfs subvolume create /mnt/@/srv
 	btrfs subvolume create /mnt/@/tmp
+	if [ "$HOMESNAP" = "yes" ]; then
+   
+    	btrfs subvolume create /mnt/@/home
+   
+   	fi 
 	mkdir /mnt/@/var
 	btrfs subvolume create /mnt/@/var/cache
 	btrfs subvolume create /mnt/@/var/log
@@ -49,8 +54,11 @@ source /archscript/config.sh
 	mkdir /mnt/var/spool
 	mkdir /mnt/var/tmp
 	mkdir /mnt/boot/ESP
-	mkdir /mnt/home
-
+	if [ "$HOMESNAP" = "no" ]; then
+   
+    	mkdir /mnt/home
+   
+   	fi 
 
 # mount subvolumes and partition
 
