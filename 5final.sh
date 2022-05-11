@@ -39,7 +39,22 @@ chmod +x strap.sh
 bash strap.sh
 rm /strap.sh
 pacman -Syyu --noconfirm
-pacman -S paru octopi snap-pac-grub stacer nerd-fonts-fantasque-sans-mono --noconfirm
+
+
+if [ "$AURCHOICE" = "yay" ]; then
+      pacman -S yay
+      
+      elif [ "$AURCHOICE" = "paru" ]; then
+      pacman -S paru
+      
+      elif [ "$AURCHOICE" = "octopi-paru" ]; then
+      pacman -S paru octopi
+      
+      elif [ "$AURCHOICE" = "octopi-yay" ]; then
+      pacman -S yay octopi
+fi
+
+pacman -S  snap-pac-grub nerd-fonts-fantasque-sans-mono --noconfirm
 
 
 #Changing The timeline auto-snap
