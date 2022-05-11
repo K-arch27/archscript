@@ -1,9 +1,14 @@
 # archscript
 ## My own arch install script with Btrfs and snapper Setup
 
-### -----------Important Information-----------
+### -----------Options Included-----------
 
 
+Choice of Desktop environements/Tiling Manager
+Choice of Shell (bash, fish, oil, zsh)
+Choice of Aur helper (yay, paru, octopi + yay, octopi + paru)
+Choice for BlackArch Repo
+Chaoctic-aur repo is added for the installation of snap-pac-grub
 
 
 ### -----------Important Information-----------
