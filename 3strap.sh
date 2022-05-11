@@ -32,6 +32,12 @@ echo -ne "
 #required Package
 if [ "$SHELLCHOICE" = "fish" ]; then
       pacstrap /mnt fish
+      
+      elif [ "$SHELLCHOICE" = "osh" ]; then
+      pacstrap /mnt oil
+      
+      elif [ "$SHELLCHOICE" = "zsh" ]; then
+      pacstrap /mnt zsh
 fi
 pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
 
