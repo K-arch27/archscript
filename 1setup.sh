@@ -286,7 +286,8 @@ homepartition2 () {
 
 homesnapchoice () {
 echo -ne "
-Do you want /Home to be included inside snapshot ?"
+Do you want /Home to be included inside snapshot ? 
+Be aware that doing so might result in lost data when rolling the system back to a previous state"
 
 options=(yes no)
 
