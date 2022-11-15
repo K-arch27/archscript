@@ -142,7 +142,14 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
 fi
 
 
+#adding chaotic-Aur to live environnement for snap-pac-grub
+pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key FBA220DFC880C036
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+cat /root/archscript/mirror.txt >> /etc/pacman.conf
+pacman -Sy --noconfirm
 
+pacstrap /mnt snap-pac-grub nerd-fonts-fantasque-sans-mono
 
 echo -ne "
 
@@ -154,11 +161,11 @@ echo -ne "
 proc_type=$(lscpu)
 if grep -E "GenuineIntel" <<< ${proc_type}; then
     echo "Installing Intel microcode"
-    pacman -S --noconfirm intel-ucode
+    pacstrap /mnt intel-ucode
     proc_ucode=intel-ucode.img
 elif grep -E "AuthenticAMD" <<< ${proc_type}; then
     echo "Installing AMD microcode"
-    pacman -S --noconfirm amd-ucode
+    pacstrap /mnt amd-ucode
     proc_ucode=amd-ucode.img
 fi
 
