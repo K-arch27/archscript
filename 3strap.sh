@@ -74,7 +74,8 @@ pacstrap /mnt networkmanager sof-firmware man-db man-pages texinfo
 if [ "$DECHOICE" = "kaidaplasma" ]; then
       pacstrap /mnt  xorg xorg-server plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 sddm 
       pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
-      pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols 
+      pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols
+      pacstrap /mnt networkmanager sof-firmware man-db man-pages texinfo
 
    elif [ "$DECHOICE" = "fullplasma" ]; then
 
@@ -171,7 +172,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp -R ${SCRIPT_DIR} /mnt/root/archscript
     chmod +x /mnt/root/archscript/4chroot.sh
     chmod +x /mnt/root/archscript/5final.sh
-    chmod +x /mnt/root/archscript/6log.sh
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 
