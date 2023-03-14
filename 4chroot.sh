@@ -80,7 +80,8 @@ echo -ne "
 if [ "$DECHOICE" = "kaidaplasma" ]; then
 
       git clone https://github.com/k-arch27/dotfiles
-      cp -a ./dotfiles/. /home/$USERNAME
+      cp -a ./dotfiles/. /home/$USERNAME/.config/
+      rm -Rfd ./dotfiles
 
 
    elif [ "$DECHOICE" = "fullplasma" ]; then
