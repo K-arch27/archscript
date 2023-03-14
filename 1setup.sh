@@ -94,10 +94,9 @@ echo -ne "Is this correct?
 "
 options=("Yes" "No")
 select_option $? 1 "${options[@]}"
-set_option KEYMAP $keymap
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-
+set_option KEYMAP $keymap
     n|N|no|NO|No)
     clear
     echo "Please choose again"
