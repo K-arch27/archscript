@@ -444,6 +444,7 @@ homepartition () {
         clear
         logo
         echo "No Home Partition are gonna be used"
+        set_option HOMEPART "no"
         homesnapchoice;;
 
         
