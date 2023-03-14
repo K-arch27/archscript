@@ -189,6 +189,31 @@ esac
 
 }
 
+lib32repo () {
+echo -ne "
+Do you want the Multilib repo ?"
+options=(no yes)
+
+select_option $? 4 "${options[@]}"
+libchoice=${options[$?]}
+
+echo -ne "Your choice : ${libchoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+set_option LIBCHOICE $libchoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    lib32repo;;
+    *) echo "Wrong option. Try again";blackarch;;
+esac
+
+
 AurHelper () {
 echo -ne "
 Please select an aur helper from this list"
@@ -214,6 +239,8 @@ set_option AURCHOICE $aurchoice
 esac
 
 }
+
+
 
 chaorepo () {
 echo -ne "
@@ -495,6 +522,9 @@ homepartition () {
     clear
     logo
     kernelselect
+    clear
+    logo
+    lib32repo
     clear
     logo
     AurHelper
