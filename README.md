@@ -10,6 +10,8 @@ Choice of User Login Shell (bash, fish, zsh)
 
 Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)
 
+Choice for Multilib Repo
+
 Choice for BlackArch Repo
 
 Choice for Chaoctic-aur repo
