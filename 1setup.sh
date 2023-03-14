@@ -363,6 +363,7 @@ homefinal () {
 clear
 logo
 set_option HOMEPART "yes"
+set_option HOMESNAP "no"
 uuid5=$(blkid -o value -s UUID $partition5)
 set_option HOMEUUID $uuid5
 }
