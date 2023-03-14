@@ -21,9 +21,8 @@ echo -ne "
     chmod +x ./4chroot.sh
     chmod +x ./5final.sh
     cp -R ${SCRIPT_DIR} /
-
-    ( bash /archscript/1setup.sh )|& tee /archscript/startup.log
     source /archscript/config.sh
+    ( bash /archscript/1setup.sh )|& tee /archscript/setup.log
     ( bash /archscript/2partition.sh )|& tee /archscript/partition.log
     ( bash /archscript/3strap.sh )|& tee /archscript/strap.log
     ( arch-chroot /mnt /root/archscript/4chroot.sh )|& tee /mnt/root/archscript/chroot.log
