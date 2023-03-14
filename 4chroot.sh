@@ -4,13 +4,7 @@ source $SCRIPT_DIR/config.sh
 
 clear
 logo
-echo -ne "
--------------------------------------------------------------------------
-                    Network Setup 
--------------------------------------------------------------------------
-"
 
-systemctl enable --now NetworkManager
 
 
 echo -ne "
@@ -23,6 +17,8 @@ sed -i "s/^#${LANGLOCAL}/${LANGLOCAL}/" /etc/locale.gen
 locale-gen
 
 
+systemctl enable --now NetworkManager
+
 # Add sudo rights
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
@@ -30,9 +26,12 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 #Add parallel downloading
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
+if [ "$LIBCHOICE" = "yes" ]; then 
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
+fi
+
 clear
 logo
 echo -ne "
@@ -59,7 +58,7 @@ fi
 echo "$USERNAME:$PASSWORD" | chpasswd
 echo "root:$ROOTPASSWORD" | chpasswd
 
-mkinitcpio -p linux
+mkinitcpio -P
 
 umount /.snapshots
 rm -r /.snapshots
