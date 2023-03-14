@@ -43,5 +43,7 @@ echo -ne "
         Automated Arch Linux Installer With Btrfs Snapshot
 -------------------------------------------------------------------------
             Done - Please Eject Install Media and Reboot
+      Also note that this script copied itself in /root/archscript/
+             with the config you choosed and the logs
 
 "
