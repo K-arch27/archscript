@@ -71,12 +71,16 @@ source /archscript/config.sh
     mount UUID=${EFIUUID} /mnt/boot/ESP
     swapon UUID=${SWAPUUID}
     
-   if [ "$HOMEPART" = "yes" ]; then
+   if [ "$HOMEPART" = "yes" ] && [ "$HOMESNAP" = "no" ]; then
    
     mount UUID=${HOMEUUID} /mnt/home/
-   
+
    fi 
 	
+ if [ "$HOMEPART" = "no" ] && [ "$HOMESNAP" = "no" ]; then
+   
+    mount UUID=${ROOTUUID} -o noatime,compress=zstd,ssd,commit=120,subvol=@/home /mnt/home
 
+   fi 
 
 
