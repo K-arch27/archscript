@@ -56,11 +56,7 @@ source /archscript/config.sh
 	mkdir /mnt/var/spool
 	mkdir /mnt/var/tmp
 	mkdir /mnt/boot/ESP
-	if [ "$HOMESNAP" = "yes" ]; then
-   
     	mkdir /mnt/home
-   
-   	fi 
 
 # mount subvolumes and partition
 
@@ -77,7 +73,7 @@ source /archscript/config.sh
     
    if [ "$HOMEPART" = "yes" ]; then
    
-    mount ${HOMEDEV} /mnt/home/
+    mount UUID=${HOMEUUID} /mnt/home/
    
    fi 
 	
