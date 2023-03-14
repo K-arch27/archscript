@@ -16,7 +16,7 @@ Choice for BlackArch Repo
 
 Choice for Chaoctic-aur repo
 
-Choice for Including /home or not inside of the snapshot
+Choice for Including /home or not inside of the main subvolume for snapshot
 
 ### -----------Important Information-----------
 
