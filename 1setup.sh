@@ -6,21 +6,22 @@
 
     pacman-key --init
     pacman-key --populate archlinux
-    pacman -Sy
     pacman -Sy archlinux-keyring --needed --noconfirm
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-    pacman -S --noconfirm btrfs-progs gptfdisk reflector rsync glibc
+    pacman -S --noconfirm --needed btrfs-progs gptfdisk reflector rsync glibc
     timedatectl set-ntp true
     echo -ne "
 -------------------------------------------------------------------------
                     Updating Mirrorlist
 -------------------------------------------------------------------------
 "
-    reflector --verbose -a 48 -c canada -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+    reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
     clear
-
+    
+#Where am I ?
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # set up a config file
 CONFIG_FILE=$SCRIPT_DIR/config.sh
 
@@ -31,7 +32,8 @@ set_option() {
     fi
     echo "${1}=${2}" >>$CONFIG_FILE # add option
 }
-source /archscript/config.sh
+
+source $SCRIPT_DIR/config.sh
 
 
 timezone () {
@@ -67,7 +69,21 @@ select_option $? 4 "${options[@]}"
 langlocale=${options[$?]}
 
 echo -ne "Your locale: ${langlocale} \n"
-set_option LANGLOCAL $langlocale
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+    set_option LANGLOCAL $langlocale;;
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    localeselect;;
+    *) echo "Wrong option. Try again";timezone;;
+esac
+
 }
 
 
@@ -81,7 +97,21 @@ select_option $? 4 "${options[@]}"
 keymap=${options[$?]}
 
 echo -ne "Your keyboards layout: ${keymap} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
 set_option KEYMAP $keymap
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    keymap;;
+    *) echo "Wrong option. Try again";timezone;;
+esac
+
 loadkeys $keymap
 }
 
@@ -94,21 +124,50 @@ options=(bash fish zsh)
 select_option $? 4 "${options[@]}"
 shellchoice=${options[$?]}
 
-echo -ne "Your Gui : ${keymap} \n"
+echo -ne "Your shell : ${shellchoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
 set_option SHELLCHOICE $shellchoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    loginshell;;
+    *) echo "Wrong option. Try again";timezone;;
+esac
+
 }
 
 
 desktopenv () {
 echo -ne "
-Please select a Gui from this list"
+Please select an Environement from this list"
 options=(kaidaplasma fullplasma minimalplasma gnome fullgnome xfce fullxfce fullMATE MATE cinnamon fulldeepin deepin lxqt i3gaps xmonad openbox none)
 
 select_option $? 4 "${options[@]}"
 dechoice=${options[$?]}
 
-echo -ne "Your Gui : ${keymap} \n"
+echo -ne "Your Environement : ${dechoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
 set_option DECHOICE $dechoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    desktopenv;;
+    *) echo "Wrong option. Try again";timezone;;
+esac
+
+
 }
 
 kernelselect () {
@@ -120,7 +179,21 @@ select_option $? 4 "${options[@]}"
 kernelchoice=${options[$?]}
 
 echo -ne "Your kernel : ${kernelchoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
 set_option KERNELCHOICE $kernelchoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    kernelselect;;
+    *) echo "Wrong option. Try again";timezone;;
+esac
+
 }
 
 AurHelper () {
