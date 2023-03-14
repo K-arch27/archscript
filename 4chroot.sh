@@ -79,7 +79,9 @@ echo -ne "
 
 if [ "$DECHOICE" = "kaidaplasma" ]; then
 
-      systemctl enable sddm
+      git clone https://github.com/k-arch27/dotfiles
+      cp -a ./dotfiles/. /home/$USERNAME
+
 
    elif [ "$DECHOICE" = "fullplasma" ]; then
 
