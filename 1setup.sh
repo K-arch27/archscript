@@ -81,7 +81,7 @@ case ${options[$?]} in
     clear
     echo "Please choose again"
     localeselect;;
-    *) echo "Wrong option. Try again";timezone;;
+    *) echo "Wrong option. Try again";localeselect;;
 esac
 
 }
@@ -109,7 +109,7 @@ case ${options[$?]} in
     clear
     echo "Please choose again"
     keymap;;
-    *) echo "Wrong option. Try again";timezone;;
+    *) echo "Wrong option. Try again";keymap;;
 esac
 
 loadkeys $keymap
@@ -137,7 +137,7 @@ set_option SHELLCHOICE $shellchoice
     clear
     echo "Please choose again"
     loginshell;;
-    *) echo "Wrong option. Try again";timezone;;
+    *) echo "Wrong option. Try again";loginshell;;
 esac
 
 }
@@ -164,7 +164,7 @@ set_option DECHOICE $dechoice
     clear
     echo "Please choose again"
     desktopenv;;
-    *) echo "Wrong option. Try again";timezone;;
+    *) echo "Wrong option. Try again";desktopenv;;
 esac
 
 
@@ -191,7 +191,7 @@ set_option KERNELCHOICE $kernelchoice
     clear
     echo "Please choose again"
     kernelselect;;
-    *) echo "Wrong option. Try again";timezone;;
+    *) echo "Wrong option. Try again";kernelselect;;
 esac
 
 }
@@ -205,8 +205,47 @@ select_option $? 4 "${options[@]}"
 aurchoice=${options[$?]}
 
 echo -ne "Your choice : ${aurchoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
 set_option AURCHOICE $aurchoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    AurHelper;;
+    *) echo "Wrong option. Try again";AurHelper;;
+esac
+
 }
+
+chaorepo () {
+echo -ne "
+Do you want the Chaotic-Aur repo ?"
+options=(no yes)
+
+select_option $? 4 "${options[@]}"
+chaochoice=${options[$?]}
+
+echo -ne "Your choice : ${chaochoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+set_option CHAOCHOICE $chaochoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    chaorepo;;
+    *) echo "Wrong option. Try again";blackarch;;
+esac
+
 
 blackarch () {
 echo -ne "
@@ -216,8 +255,22 @@ options=(no yes)
 select_option $? 4 "${options[@]}"
 blackchoice=${options[$?]}
 
-echo -ne "Your choice : ${aurchoice} \n"
+echo -ne "Your choice : ${blackchoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
 set_option BLACKCHOICE $blackchoice
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    blackarch;;
+    *) echo "Wrong option. Try again";blackarch;;
+esac
+
 }
 
 userinfo () {
@@ -375,7 +428,7 @@ homepartition () {
         #choice for Having Separate Home or Not
 
 
-        echo -ne "Do you want a separate Home partition ?"
+        echo -ne "Do you want a separate Home partition ? (Doing so prevent home from being included in snapshot)"
     
     options=("Yes" "No")
     select_option $? 1 "${options[@]}"
@@ -449,6 +502,9 @@ homepartition () {
     clear
     logo
     AurHelper
+    clear
+    logo
+    chaorepo
     clear
     logo
     blackarch
