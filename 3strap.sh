@@ -72,7 +72,7 @@ pacstrap /mnt networkmanager sof-firmware man-db man-pages texinfo
 
 #GUI choice installation
 if [ "$DECHOICE" = "kaidaplasma" ]; then
-      pacstrap /mnt  xorg xorg-server plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 
+      pacstrap /mnt  xorg xorg-server xorg-xinit plasma konsole dolphin dolphin-plugins ark kate kcalc kolourpaint spectacle krunner partitionmanager packagekit-qt5 
       pacstrap /mnt latte-dock discord filelight htop kruler ksysguard yakuake nano starship neofetch firefox git
       pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols zip unrar arch-install-scripts 
 
