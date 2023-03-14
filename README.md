@@ -24,6 +24,7 @@ Partition needs to be done before launching the script
 
 KNOW BUG:
 -When choosing a username or a password certain special characters will break the script
+
 (For now I recommand entering a simple password and changing it after the installation if you want special charaters like @"' inside of it) 
 
 ### ------------Install Instruction------------
