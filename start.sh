@@ -20,7 +20,6 @@ echo -ne "
     chmod +x ./3strap.sh
     chmod +x ./4chroot.sh
     chmod +x ./5final.sh
-    chmod +x ./6log.sh
     cp -R ${SCRIPT_DIR} /
 
     ( bash /archscript/1setup.sh )|& tee /archscript/startup.log
@@ -29,7 +28,6 @@ echo -ne "
     ( bash /archscript/3strap.sh )|& tee /archscript/strap.log
     ( arch-chroot /mnt /root/archscript/4chroot.sh )|& tee /mnt/root/archscript/chroot.log
     ( arch-chroot /mnt /root/archscript/5final.sh )|& tee /mnt/root/archscript/final.log
-   ( arch-chroot /mnt /root/archscript/6log.sh )
    
 echo -ne "
 -------------------------------------------------------------------------
