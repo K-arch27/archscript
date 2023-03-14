@@ -23,14 +23,6 @@
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # set up a config file
 CONFIG_FILE=$SCRIPT_DIR/config.sh
-
-# set options in config.sh
-set_option() {
-    if grep -Eq "^${1}.*" $CONFIG_FILE; then # check if option exists
-        sed -i -e "/^${1}.*/d" $CONFIG_FILE # delete option if exists
-    fi
-    echo "${1}=${2}" >>$CONFIG_FILE # add option
-}
 source $SCRIPT_DIR/config.sh
 
 
@@ -102,7 +94,8 @@ options=("Yes" "No")
 select_option $? 1 "${options[@]}"
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option KEYMAP $keymap;;
+set_option KEYMAP $keymap
+loadkeys $keymap;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -110,7 +103,6 @@ set_option KEYMAP $keymap;;
     *) echo "Wrong option. Try again";keymap;;
 esac
 
-loadkeys $keymap
 }
 
 loginshell () {
@@ -218,6 +210,7 @@ set_option LIBCHOICE $libchoice;;
     *) echo "Wrong option. Try again";blackarch;;
 esac
 
+}
 
 AurHelper () {
 echo -ne "
@@ -271,6 +264,7 @@ set_option CHAOCHOICE $chaochoice;;
     *) echo "Wrong option. Try again";blackarch;;
 esac
 
+}
 
 blackarch () {
 echo -ne "
