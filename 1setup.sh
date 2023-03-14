@@ -96,7 +96,7 @@ options=("Yes" "No")
 select_option $? 1 "${options[@]}"
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option KEYMAP $keymap
+set_option KEYMAP $keymap;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -124,7 +124,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option SHELLCHOICE $shellchoice
+set_option SHELLCHOICE $shellchoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -151,7 +151,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option DECHOICE $dechoice
+set_option DECHOICE $dechoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -178,7 +178,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option KERNELCHOICE $kernelchoice
+set_option KERNELCHOICE $kernelchoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -204,7 +204,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option LIBCHOICE $libchoice
+set_option LIBCHOICE $libchoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -229,7 +229,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option AURCHOICE $aurchoice
+set_option AURCHOICE $aurchoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -257,7 +257,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option CHAOCHOICE $chaochoice
+set_option CHAOCHOICE $chaochoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -282,7 +282,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-set_option BLACKCHOICE $blackchoice
+set_option BLACKCHOICE $blackchoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
