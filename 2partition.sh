@@ -53,7 +53,7 @@ source $SCRIPT_DIR/config.sh
 	mkdir /mnt/var/log
 	mkdir /mnt/var/spool
 	mkdir /mnt/var/tmp
-	mkdir /mnt/boot/ESP
+	mkdir /mnt/boot/efi
     	mkdir /mnt/home
 
 # mount subvolumes and partition
