@@ -27,7 +27,6 @@ systemctl enable libvirtd.service
 systemctl enable virtlogd.socket
 virsh net-autostart default
 
- groupadd libvirt
  useradd -m -G wheel,libvirt -s /bin/fish $USERNAME
         
 
