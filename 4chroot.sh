@@ -2,9 +2,6 @@
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source $SCRIPT_DIR/config.sh
 
-clear
-logo
-
 sed -i "s/^#${LANGLOCAL}/${LANGLOCAL}/" /etc/locale.gen
 locale-gen
 
@@ -21,22 +18,14 @@ sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
+
 #Installing some shit
 
-pacman -Syu --needed --noconfirm qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq
-pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
-pacman -S --needed lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go
+pacman -Syu --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go
+
 systemctl enable libvirtd.service
 systemctl enable virtlogd.socket
 virsh net-autostart default
-
-clear
-logo
-echo -ne "
--------------------------------------------------------------------------
-                    Adding User
--------------------------------------------------------------------------
-"
 
  groupadd libvirt
  useradd -m -G wheel,libvirt -s /bin/fish $USERNAME
@@ -59,12 +48,6 @@ chmod 750 /.snapshots
 
 clear
 logo
-echo -ne "
--------------------------------------------------------------------------
-                  Display manager service activation
--------------------------------------------------------------------------
-"
-
 
       git clone https://github.com/k-arch27/dotfiles
       cp -a ./dotfiles/. /home/$USERNAME/.config/
