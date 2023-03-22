@@ -138,7 +138,7 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
       
         elif [ "$DECHOICE" = "bspwm" ]; then
 
-      pacstrap /mnt bspwm sxhkd
+      pacstrap /mnt bspwm sxhkd xorg-xinit
 
    else
 
