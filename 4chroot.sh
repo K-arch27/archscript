@@ -49,6 +49,8 @@ clear
 logo
 
       git clone https://github.com/k-arch27/dotfiles
+      cp -a ./dotfiles/kde /kde
+      rm ./dotfiles/kde
       cp -a ./dotfiles/. /home/$USERNAME/.config/
       rm -Rfd ./dotfiles
       mkdir /home/$USERNAME/git
