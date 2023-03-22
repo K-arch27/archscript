@@ -323,8 +323,29 @@ while true; do
     echo -e "\nPasswords do not match. Please try again. \n"
   fi
 done
+}
+
+myhostname () {
+
 read -rep "Please enter your hostname: " nameofmachine
-set_option NAME_OF_MACHINE $nameofmachine
+clear
+logo
+echo -ne "Your Hostname : ${nameofmachine} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+set_option NAME_OF_MACHINE $nameofmachine;;
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    myhostname;;
+    *) echo "Wrong option. Try again";myhostname;;
+esac
+
 }
 
 efiformat () {
@@ -480,6 +501,9 @@ homepartition () {
     clear
     logo
     userinfo
+    clear
+    logo
+    myhostname
     clear
     logo
     timezone
