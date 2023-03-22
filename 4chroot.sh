@@ -51,7 +51,13 @@ logo
       git clone https://github.com/k-arch27/dotfiles
       cp -a ./dotfiles/. /home/$USERNAME/.config/
       rm -Rfd ./dotfiles
-
+      mkdir /home/$USERNAME/git
+      mkdir /home/$USERNAME/git/yay
+      git clone https://aur.archlinux.org/yay
+      
+      cp -a ./yay/* /home/$USERNAME/git/yay/
+      rm -Rfd ./yay
+      chown -R $USERNAME /home/$USERNAME
 
  
 
