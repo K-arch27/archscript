@@ -21,7 +21,7 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 #Installing some shit
 
-pacman -Syu --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go
+pacman -Syu --needed --noconfirm exa nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go
 
 systemctl enable libvirtd.service
 systemctl enable virtlogd.socket
