@@ -352,26 +352,6 @@ esac
 
 }
 
-efiformat () {
-
-        #choice for formmating the EFI
-
-
-        echo -ne "Do you want to format the EFI partition ? ${partition2}
-    Choose No if it's already used by another system or Yes if it's a New partition"
-    options=("Yes" "No")
-    select_option $? 1 "${options[@]}"
-
-    case ${options[$?]} in
-        y|Y|yes|Yes|YES)
-        echo "EFI partition will be Formatted"
-        mkfs.vfat -F32 ${partition2};;
-        n|N|no|NO|No)
-        echo "Please make sure it's a valid EFI partition otherwise the following may fail"
-        read -p "Press any key to resume";;
-        *) echo "Wrong option. Try again";efiformat;;
-    esac
-}
 
 swappartition () {
 
@@ -514,16 +494,6 @@ homepartition () {
     clear
     logo
     localeselect
-    clear
-    logo
-    lsblk
-    read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
-    set_option EFIPART $partition2
-    clear
-    logo
-    efiformat
-    uuid2=$(blkid -o value -s UUID $partition2)
-    set_option EFIUUID $uuid2
     clear
     logo
     swappartition
