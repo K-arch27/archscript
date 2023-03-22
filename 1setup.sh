@@ -259,7 +259,8 @@ case ${options[$?]} in
     set_option CHAOCHOICE $chaochoice
     if [ "$CHAOCHOICE" = "yes" ]; then
     AurHelper
-	fi;;
+	fi
+    clear;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
