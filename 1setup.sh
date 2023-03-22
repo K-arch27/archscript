@@ -31,6 +31,32 @@ loadkeys $keymap
 
 set_option SHELLCHOICE fish
 
+desktopenv () {
+echo -ne "
+Please select an Environement from this list"
+options=(Desktop Server)
+
+select_option $? 4 "${options[@]}"
+dechoice=${options[$?]}
+
+echo -ne "Your Environement : ${dechoice} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+set_option DECHOICE $dechoice;;
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    desktopenv;;
+    *) echo "Wrong option. Try again";desktopenv;;
+esac
+
+
+
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} 
@@ -64,8 +90,30 @@ while true; do
     echo -e "\nPasswords do not match. Please try again. \n"
   fi
 done
+
+}
+
+myhostname () {
+
 read -rep "Please enter your hostname: " nameofmachine
-set_option NAME_OF_MACHINE $nameofmachine
+clear
+logo
+echo -ne "Your Hostname : ${nameofmachine} \n"
+echo -ne "Is this correct?
+"
+options=("Yes" "No")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+set_option NAME_OF_MACHINE $nameofmachine;;
+    n|N|no|NO|No)
+    clear
+    echo "Please choose again"
+    myhostname;;
+    *) echo "Wrong option. Try again";myhostname;;
+esac
+
 }
 
 efiformat () {
@@ -219,6 +267,9 @@ homepartition () {
     userinfo
     clear
     logo
+    myhostname
+    clear
+    logo
     lsblk
     read -p "Please enter your EFI partition (EX: /dev/sda1): " partition2
     set_option EFIPART $partition2
@@ -243,3 +294,4 @@ homepartition () {
     mkfs.btrfs -L ROOT -m single -f $partition3
     uuid3=$(blkid -o value -s UUID $partition3)
     set_option ROOTUUID $uuid3
+    desktopenv
