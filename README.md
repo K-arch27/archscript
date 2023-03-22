@@ -1,4 +1,4 @@
-# archscript
+# archscript (BIOS Version)
 ## My own arch install script with Btrfs and snapper Setup
 
 ### -----------Options Included-----------
@@ -33,7 +33,6 @@ Choice For formating /home to Ext4 or Btrfs Or to Keep it As is If on a differen
 ### -----------Important Information-----------
 
 0: Pre-requisite
-UEFI Only For now
 Partition needs to be done before launching the script 
 (Or Done on TTY2 while the script First Ask for the Partition if you forgot)
 
