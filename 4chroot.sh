@@ -21,7 +21,7 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 #Installing some shit
 
-pacman -Syu --needed --noconfirm exa nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go
+pacman -Syu --needed --noconfirm exa elinks steam konsole lutris wine-staging nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader archlinux-wallpaper lolcat qemu-desktop libvirt edk2-ovmf virt-manager dnsmasq lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader go pipewire-pulse plasma-pa reflector rsync
 
 systemctl enable libvirtd.service
 systemctl enable virtlogd.socket
@@ -58,8 +58,10 @@ logo
       cp -a ./yay/* /home/$USERNAME/git/yay/
       rm -Rfd ./yay
       chown -R $USERNAME /home/$USERNAME
-
- 
+      cd /home/$USERNAME/git/yay/
+      makepkg
+      pacman -U ./yay*.pkg.tar.zst --noconfirm
+      yay -S --noconfirm protonup-qt snap-pac-grub btrfs-assistant yay
 
 clear
 logo
