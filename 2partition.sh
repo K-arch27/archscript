@@ -53,7 +53,6 @@ source $SCRIPT_DIR/config.sh
 	mkdir /mnt/var/log
 	mkdir /mnt/var/spool
 	mkdir /mnt/var/tmp
-	mkdir /mnt/boot/efi
     	mkdir /mnt/home
 
 # mount subvolumes and partition
@@ -66,7 +65,6 @@ source $SCRIPT_DIR/config.sh
     mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/log,nodatacow /mnt/var/log
     mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/spool,nodatacow /mnt/var/spool
     mount UUID=${ROOTUUID} -o noatime,ssd,commit=120,subvol=@/var/tmp,nodatacow /mnt/var/tmp
-    mount UUID=${EFIUUID} /mnt/boot/efi
     swapon UUID=${SWAPUUID}
     
    if [ "$HOMEPART" = "yes" ] && [ "$HOMESNAP" = "no" ]; then
