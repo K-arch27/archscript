@@ -136,7 +136,7 @@ esac
 desktopenv () {
 echo -ne "
 Please select an Environement from this list"
-options=(kaidaplasma fullplasma minimalplasma gnome fullgnome xfce fullxfce fullMATE MATE cinnamon fulldeepin deepin lxqt i3gaps xmonad openbox none)
+options=(kaidaplasma fullplasma minimalplasma gnome fullgnome xfce fullxfce fullMATE MATE cinnamon fulldeepin deepin lxqt i3gaps xmonad openbox bspwm none)
 
 select_option $? 4 "${options[@]}"
 dechoice=${options[$?]}
