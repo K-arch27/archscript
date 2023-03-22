@@ -8,26 +8,31 @@ Choice of Desktop environements/Tiling Manager
 
 Choice of User Login Shell (bash, fish, zsh)
 
-Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)
-
 Choice for Multilib Repo
 
 Choice for BlackArch Repo
 
 Choice for Chaoctic-aur repo
 
+Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru) (If Chaotic-Aur is added For now) 
+(I'm looking for Making Aur pkg inside this script instead of relying on Chaotic Aur Or Adding Chaotic Aur Inside the Iso for pacstrapping)
+
 Choice for Including /home or not inside of the main subvolume for snapshot
+
+Choice For formating /home to Ext4 or Btrfs Or to Keep it As is If on a different partition
 
 ### -----------Important Information-----------
 
 0: Pre-requisite
 UEFI Only For now
-Partition needs to be done before launching the script
+Partition needs to be done before launching the script 
+(Or Done on TTY2 while the script First Ask for the Partition if you forgot)
 
 KNOW BUG:
--When choosing a username or a password certain special characters will break the script
-
+-When Inputing text into the script (Username, Password, Hostname, etc..) special characters will break the script
+(Please Avoid Any special Character)
 (For now I recommand entering a simple password and changing it after the installation if you want special charaters like @"' inside of it) 
+
 
 ### ------------Install Instruction------------
 
