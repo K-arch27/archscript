@@ -18,7 +18,7 @@ Choice for BlackArch Repo
 
 Choice for Chaoctic-aur repo
 
-**Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)**
+Choice of Aur helper/Pacman Frontend** (yay, paru, octopi + yay, octopi + paru)
 
 *(If Chaotic-Aur is added For now) 
 
