@@ -496,6 +496,11 @@ homepartition () {
     localeselect
     clear
     logo
+    lsblk
+    read -p "Please enter your Grub Disk NOT PARTITION ( EX: /dev/sda NOT: /dev/sda1 ): " grubdisk
+    set_option GRUBDISK $grubdisk
+    clear
+    logo
     swappartition
     clear
     logo
