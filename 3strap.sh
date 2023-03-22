@@ -135,6 +135,10 @@ if [ "$DECHOICE" = "kaidaplasma" ]; then
   elif [ "$DECHOICE" = "openbox" ]; then
 
       pacstrap /mnt openbox ttf-dejavu sddm
+      
+        elif [ "$DECHOICE" = "bspwm" ]; then
+
+      pacstrap /mnt bspwm sxhkd
 
    else
 
