@@ -40,6 +40,11 @@ KNOW BUG:
 (For now I recommand entering a simple password and changing it after the installation if you want special charaters like @"' inside of it) 
 
 
+
+Post-Install : Deleting the directory /root/archscript if not needed
+(Not automated so logs can be check if needed)
+
+
 ### ------------Install Instruction------------
 
 1: Boot on Arch Iso And partition your drive(s)
