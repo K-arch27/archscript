@@ -263,11 +263,7 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
-    set_option CHAOCHOICE $chaochoice
-    if [ "$CHAOCHOICE" = "yes" ]; then
-    AurHelper
-	fi
-    clear;;
+    set_option CHAOCHOICE $chaochoice;;
     n|N|no|NO|No)
     clear
     echo "Please choose again"
@@ -559,6 +555,9 @@ homepartition () {
     clear
     logo
     lib32repo
+    clear
+    logo
+    AurHelper
     clear
     logo
     chaorepo
