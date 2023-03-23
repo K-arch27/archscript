@@ -43,6 +43,8 @@ KNOW BUG:
 (For now I recommand entering a simple password and changing it after the installation if you want special charaters like @"' inside of it) 
 
 
+Not REally a bug but snap-pac-grub (aur) still state that it's adding snapshot to the Uefi but it still work even tho it's not uefi at all
+
 ### ------------Install Instruction------------
 
 1: Boot on Arch Iso And partition your drive(s)
