@@ -55,7 +55,7 @@ Deleting the directory /root/archscript if not needed
 1: Boot on Arch Iso And partition your drive(s)
 
 
-2: Get git on the iso : pacman -Sy git
+2: Ensure keyring is updated and Get git on the iso : pacman -Sy archlinux-keyring --needed && pacman -S git
 
 
 3: Download the script : git clone https://github.com/K-arch27/archscript.git
@@ -74,16 +74,3 @@ Deleting the directory /root/archscript if not needed
 
 
 8: Sit back and enjoy
-
-
-
-### ------------Troubleshooting------------
-
- sometimes there is a key problem with the Arch Iso and you have to do this before being able to install Git : 
-
-
-> pacman -Sy archlinux-keyring
-
-> pacman -Sy git
-
-The git installation should now work
