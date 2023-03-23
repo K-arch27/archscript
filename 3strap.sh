@@ -40,7 +40,7 @@ if [ "$SHELLCHOICE" = "fish" ]; then
       elif [ "$SHELLCHOICE" = "zsh" ]; then
       pacstrap /mnt zsh
 fi
-pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac
+pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac snap-pac-grub
 
 
 
