@@ -18,11 +18,7 @@ Choice for BlackArch Repo
 
 Choice for Chaoctic-aur repo
 
-Choice of Aur helper/Pacman Frontend** (yay, paru, octopi + yay, octopi + paru)
-
-*(If Chaotic-Aur is added For now) 
-
-*(I'm looking for Making Aur pkg inside this script instead of relying on Chaotic Aur Or Adding Chaotic Aur Inside the Iso for pacstrapping)
+Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)
 
 
 Choice for Including /home or not inside of the main subvolume for snapshot
