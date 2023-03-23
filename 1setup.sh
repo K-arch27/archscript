@@ -55,7 +55,7 @@ set_option DECHOICE $dechoice;;
     *) echo "Wrong option. Try again";desktopenv;;
 esac
 
-
+}
 
 userinfo () {
 read -p "Please enter your username: " username
