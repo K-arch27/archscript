@@ -4,17 +4,33 @@
 # user name, password, etc.
 
 
+
+#Where am I ?
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# This script will ask users about their prefrences
+# like timezone, keyboard layout,
+# user name, password, etc.
+
+
     pacman-key --init
     pacman-key --populate archlinux
     pacman -Sy archlinux-keyring --needed --noconfirm
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+    
+    #Might have to resort to using this if I can't figure out chaotic-aur signing consistently
+    #sed -i 's/^SigLevel    = Required DatabaseOptional/SigLevel    = Never/' /etc/pacman.conf
+
+    pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+    pacman-key --lsign-key FBA220DFC880C036
+    pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+    cat $SCRIPT_DIR/mirror.txt >> /etc/pacman.conf
+    pacman -Sy  chaotic-keyring --needed --noconfirm
     pacman -S --noconfirm --needed btrfs-progs gptfdisk reflector rsync glibc
     timedatectl set-ntp true
     reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
     clear
     
-#Where am I ?
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # set up a config file
 CONFIG_FILE=$SCRIPT_DIR/config.sh
 source $SCRIPT_DIR/config.sh
@@ -25,9 +41,8 @@ set_option TIMEZONE $time_zone
 
 set_option LANGLOCAL en_US.UTF-8
 
-keymap=cf
-set_option KEYMAP $keymap
-loadkeys $keymap
+set_option KEYMAP cf
+loadkeys cf
 
 set_option SHELLCHOICE fish
 
