@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+    
+#Where am I ?
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # This script will ask users about their prefrences
 # like timezone, keyboard layout,
 # user name, password, etc.
@@ -8,6 +12,11 @@
     pacman-key --populate archlinux
     pacman -Sy archlinux-keyring --needed --noconfirm
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+    pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+    pacman-key --lsign-key FBA220DFC880C036
+    pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+    cat $SCRIPT_DIR/mirror.txt >> /etc/pacman.conf
+    pacman -Sy --noconfirm
     pacman -S --noconfirm --needed btrfs-progs gptfdisk reflector rsync glibc
     timedatectl set-ntp true
     echo -ne "
@@ -18,9 +27,7 @@
     reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
     clear
-    
-#Where am I ?
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # set up a config file
 CONFIG_FILE=$SCRIPT_DIR/config.sh
 source $SCRIPT_DIR/config.sh
