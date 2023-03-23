@@ -149,6 +149,22 @@ fi
 
 
 
+if [ "$AURCHOICE" = "yay" ]; then
+      pacstrap /mnt yay
+      
+      elif [ "$AURCHOICE" = "paru" ]; then
+      pacstrap /mnt paru
+      
+      elif [ "$AURCHOICE" = "octopi-paru" ]; then
+      pacstrap /mnt paru octopi
+      
+      elif [ "$AURCHOICE" = "octopi-yay" ]; then
+      pacstrap /mnt yay octopi
+fi
+
+
+
+
 echo -ne "
 
 -------------------------------------------------------------------------
