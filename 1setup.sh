@@ -12,6 +12,7 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
     pacman-key --populate archlinux
     pacman -Sy archlinux-keyring --needed --noconfirm
     sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+    sed -i 's/^SigLevel    = Required DatabaseOptional/SigLevel    = Never/' /etc/pacman.conf
     pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
     pacman-key --lsign-key FBA220DFC880C036
     pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
