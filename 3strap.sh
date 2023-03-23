@@ -28,23 +28,22 @@ echo -ne "
 "
 
 
-      pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac fish linux-zen linux-zen-headers linux-lts linux-lts-headers networkmanager sof-firmware man-db man-pages texinfo 
+#always
+      pacstrap /mnt base base-devel linux-firmware e2fsprogs dosfstools grub grub-btrfs os-prober efibootmgr btrfs-progs ntfs-3g snapper snap-pac fish linux-lts linux-lts-headers networkmanager sof-firmware man-db man-pages texinfo 
       
-      pacstrap /mnt  xorg xorg-server xorg-xinit alacritty dolphin dolphin-plugins smplayer ark kate kcalc kolourpaint spectacle krunner partitionmanager plasma-desktop
+      pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-common zip unrar arch-install-scripts yay
       
-      pacstrap /mnt latte-dock discord htop kruler ksysguard nano starship neofetch firefox git thefuck
-      
-      pacstrap /mnt noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-common zip unrar arch-install-scripts intel-ucode
+#desktop
 
+
+      pacstrap /mnt  xorg xorg-server xorg-xinit alacritty dolphin dolphin-plugins smplayer ark kate kcalc kolourpaint spectacle krunner partitionmanager plasma-desktop linux-zen linux-zen-headers 
+      
+      pacstrap /mnt latte-dock discord htop kruler ksysguard nano starship neofetch firefox git thefuck octopi btrfs-assistant
 
 
 
 clear
 
-mkdir /mnt/MyData
-mkdir /mnt/MyGames
-mount /dev/sda1 /mnt/MyData
-mount /dev/sdb1 /mnt/MyGames
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
