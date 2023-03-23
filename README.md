@@ -4,50 +4,47 @@
 ### -----------Options Included-----------
 
 
-Choice of Desktop environements/Tiling Manager
+- Choice of Desktop environements/Tiling Manager
 
 
-Choice of User Login Shell (bash, fish, zsh)
+- Choice of User Login Shell (bash, fish, zsh)
 
 
-Choice for Multilib Repo
+- Choice for Multilib Repo
 
 
-Choice for BlackArch Repo
+- Choice for BlackArch Repo
 
 
-Choice for Chaoctic-aur repo
+- Choice for Chaoctic-aur repo
 
-Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)
-
-
-Choice for Including /home or not inside of the main subvolume for snapshot
+- Choice of Aur helper/Pacman Frontend (yay, paru, octopi + yay, octopi + paru)
 
 
-Choice For formating /home to Ext4 or Btrfs Or to Keep it As is If on a different partition
+- Choice for Including /home or not inside of the main subvolume for snapshot
+
+
+- Choice For formating /home to Ext4 or Btrfs Or to Keep it As is If on a different partition
 
 ### -----------Important Information-----------
 
-Pre-requisite:
+- Pre-requisite:
 
 Partition needs to be done before launching the script 
 (Or Done on TTY2 while the script First Ask for the Partition if you forgot)
 
 
--
 
-
-KNOW BUG:
+- KNOW BUG:
 
 -When Inputing text into the script (Username, Password, Hostname, etc..) special characters will break the script
 (Please Avoid Any special Character)
 (For now I recommand entering a simple password and changing it after the installation if you want special charaters like @"' inside of it) 
 
 
--
 
 
-Post-Install : 
+- Post-Install : 
 
 Deleting the directory /root/archscript if not needed
 (Not automated so logs can be check if needed)
