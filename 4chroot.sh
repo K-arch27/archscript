@@ -54,17 +54,7 @@ logo
       cp -a ./dotfiles/. /home/$USERNAME/.config/
       rm -Rfd ./dotfiles
       mkdir /home/$USERNAME/git
-      mkdir /home/$USERNAME/git/yay
-      git clone https://aur.archlinux.org/yay
-      
-      cp -a ./yay/* /home/$USERNAME/git/yay/
-      rm -Rfd ./yay
-      chown -R $USERNAME /home/$USERNAME
-      cd /home/$USERNAME/git/yay/
-      makepkg
-      pacman -U ./yay*.pkg.tar.zst --noconfirm
-      yay -S --noconfirm protonup-qt snap-pac-grub btrfs-assistant yay
-
+    
 clear
 logo
 
