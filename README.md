@@ -1,4 +1,5 @@
-# archscript (UEFI Version)
+# archscript (UEFI Version) (depreciated)
+( in favor of the gui version : https://github.com/K-arch27/K-Arch )
 ## My own arch install script with Btrfs and snapper Setup
 
 ### -----------Options Included-----------
